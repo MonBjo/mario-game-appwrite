@@ -4,29 +4,32 @@ const databaseId = '';
 const collectionId = '';
 
 const client = new Client()
-.setEndpoint('https://cloud.appwrite.io/v1')
-.setProject(projectId)
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject(projectId)
 ;
 
 const account = new Account(client);
 
-
 function register(event) {
     event.preventDefault();
     console.log("event", event);
-    // TODO check incoming values from elements
+    console.log(event.target.elements);
+    console.log("register-email", event.target.elements['register-email'].value);
+    console.log("register-password", event.target.elements['register-password'].value);
+    console.log("register-username", event.target.elements['register-username'].value);
+    
     account.create(
         ID.unique(),
-        event.target.elemtents['register-email'].value,
-        event.target.elemtents['register-password'].value,
-        event.target.elemtents['register-username'].value
+        event.target.elements['register-email'].value,
+        event.target.elements['register-password'].value,
+        event.target.elements['register-username'].value
     ), then(response => {
         console.log("Account create response",response);
         // TODO create a document in a database
 
         account.createEmailSession(
-            event.target.elemtents['register-email'].value,
-            event.target.elemtents['register-password'].value
+            event.target.elements['register-email'].value,
+            event.target.elements['register-password'].value
         );
     }).catch(error => console.error("Account create error", error));
 
