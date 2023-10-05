@@ -1,8 +1,6 @@
-import { projectId } from "../secrets";
+import { projectId, databaseId, collectionId } from "../secrets";
 
 const { Client, Account, Databases, ID, Query } = Appwrite;
-const databaseId = '';
-const collectionId = '';
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
@@ -10,14 +8,15 @@ const client = new Client()
 ;
 
 const account = new Account(client);
+const database = new Databases(client);
 
 function register(event) {
     event.preventDefault();
-    console.log("event", event);
-    console.log(event.target.elements);
-    console.log("register-email", event.target.elements['register-email'].value);
-    console.log("register-password", event.target.elements['register-password'].value);
-    console.log("register-username", event.target.elements['register-username'].value);
+    // console.log("event", event);
+    // console.log(event.target.elements);
+    // console.log("register-email", event.target.elements['register-email'].value);
+    // console.log("register-password", event.target.elements['register-password'].value);
+    // console.log("register-username", event.target.elements['register-username'].value);
     
     account.create(
         ID.unique(),
@@ -26,7 +25,7 @@ function register(event) {
         event.target.elements['register-username'].value
     ), then(response => {
         console.log("Account create response",response);
-        // TODO create a document in a database
+        database.createDocument(databaseId, collectionId);
 
         account.createEmailSession(
             event.target.elements['register-email'].value,
