@@ -1,5 +1,6 @@
+import { projectId } from "../secrets";
+
 const { Client, Account, Databases, ID, Query } = Appwrite;
-const projectId = '6511e7ed14ed7455d2e1'; // TODO make secret
 const databaseId = '';
 const collectionId = '';
 
