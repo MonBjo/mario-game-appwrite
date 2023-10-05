@@ -14,9 +14,10 @@ body {
 }
 
 .modal {
-    width: 37rem;
+    max-width: 37rem;
     margin: auto;
     margin-top: 6rem;
+    padding: 1rem;
 }
 
 form {
