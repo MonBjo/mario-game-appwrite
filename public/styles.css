@@ -42,9 +42,9 @@ form input[type=submit] {
     background-color: #808080;
 }
 
-/* .hidden {
+.hidden {
     display: none;
-} */
+} 
 
 .info-container {
     position: absolute;
