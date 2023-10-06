@@ -10,8 +10,8 @@
     
 <div id="modal" class="modal">
     <nav class="button-container">
-        <button id="register-button">Register</button>
-        <button id="register-button" class="not-active">Log in</button>
+        <button id="register-button" onclick="toggleModal(event)">Register</button>
+        <button id="login-button" onclick="toggleModal(event)" class="not-active">Log in</button>
     </nav>
 
     <form onsubmit="register(event)" id="register-form">
@@ -27,7 +27,7 @@
         <input type="submit" value="Sign Up">
     </form>
 
-    <form onsubmit="" id="login-form" class="hidden">
+    <form onsubmit="" id="login-form" class="hidden" onsubmit="login(event)">
         <label for="login-email">Email:</label>
         <input id="login-email" type="email" placeholder="your@email.com" required>
 
@@ -39,7 +39,7 @@
 </div>
 
 <aside class="info-container">
-    <button id="logout-button" class="hidden">Log Out</button>
+    <button id="logout-button" class="hidden" onClick="logout()">Log Out</button>
     <h3 id="username"></h3>
     <h3 id="highscore-tag" class="hidden">Highscore <span id="highscore"></span></h3>
 </aside>
