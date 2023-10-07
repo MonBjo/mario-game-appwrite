@@ -27,7 +27,7 @@
         <input type="submit" value="Sign Up">
     </form>
 
-    <form onsubmit="" id="login-form" class="hidden" onsubmit="login(event)">
+    <form id="login-form" class="hidden" onsubmit="login(event)">
         <label for="login-email">Email:</label>
         <input id="login-email" type="email" placeholder="your@email.com" required>
 
@@ -41,7 +41,7 @@
 <aside class="info-container">
     <button id="logout-button" class="hidden" onClick="logout()">Log Out</button>
     <h3 id="username"></h3>
-    <h3 id="highscore-tag" class="hidden">Highscore <span id="highscore"></span></h3>
+    <h3 id="highscore-tag" class="hidden">Highscore: <span id="highscore"></span></h3>
 </aside>
 
 <script src="https://kaboomjs.com/lib/0.5.0/kaboom.js"></script>
