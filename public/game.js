@@ -1,6 +1,3 @@
-// const { response } = require("express");
-// TIME 1:45:00 1:28:00
-
 const { Client, Account, Databases, ID, Query } = Appwrite;
 
 const client = new Client()
@@ -11,7 +8,7 @@ const client = new Client()
 const account = new Account(client);
 const database = new Databases(client);
 
-async function isLoggedIn() {
+function isLoggedIn() {
     return account.get().then(response => {
         console.log("response", response);
         if(response) {
@@ -20,7 +17,7 @@ async function isLoggedIn() {
         return false;
     }).catch(error => console.log("error", error));
 }
-async function getUserId() {
+function getUserId() {
     return account.get().then(response => {
         return response.$id;
     }).catch(error => console.log("error", error));
@@ -33,8 +30,23 @@ function displayUserName() {
     }).catch(error => console.log("error", error));
 }
 
-function updateScore() {
-    showScore();
+function updateScore(score) {
+    const currentHighscore = document.getElementById('highscore').textContent;
+    if(Number(score) > Number(currentHighscore)) {
+        getUserId().then(userId => {
+            database.updateDocument(
+                databaseId,
+                collectionId,
+                userId,
+                {
+                    "userId": userId,
+                    "highscore": score
+                }
+            ).then(() => {
+                showScore();
+            }).then(error => console.log("error", error));
+        })
+    }
 }
 
 function showScore() {
@@ -44,10 +56,12 @@ function showScore() {
             databaseId,
             collectionId,
             [
-                query.equal("userId", userId)
+                Query.equal("userId", userId)
             ]
         ).then(response => {
-            console.log("response", response.highscore);
+            const highscoreElem = document.getElementById('highscore')
+            highscoreElem.textContent = response.documents[0].highscore;
+            console.log("response highscore", response);
         });
     })
 }
@@ -91,6 +105,7 @@ function register(event) {
 
 function login(event) {
     event.preventDefault();
+    console.log("login event", event);
     account.createEmailSession(
         event.target.elements['login-email'].value,
         event.target.elements['login-password'].value
@@ -214,14 +229,14 @@ function startGame() {
         const maps = [
             [
                 '                                      ',
-                '         $$$$$                        ',
-                '                                      ',
+                '         $ $ $                        ',
+                '          $ $                         ',
                 '                                      ',
                 '                                      ',
                 '         =*=%=                        ',
                 '                                      ',
                 '      =                         -+    ',
-                '                   ^     ^      ()   ^',
+                '===                ^     ^      ()   ^',
                 '======================================',
             ],
             [
@@ -397,7 +412,8 @@ function startGame() {
 
 
         scene('lose', ({score}) => {
-            add([ text(score, 32), origin('center'), pos(width()/2, height()/2) ])
+            add([ text(score, 32), origin('center'), pos(width()/2, height()/2) ]);
+            updateScore(score);
         })
 
     })
