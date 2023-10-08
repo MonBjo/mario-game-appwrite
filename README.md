@@ -1,8 +1,21 @@
-# mario-game-appwrite
- Follow along video by Ania Kubów on how to make a web game
-
+# Mario Game Appwrite
+I follow along with Ania Kubów as she shows us how to make a web game.
 [2hrs to code Mario with Auth + save scores | JavaScript, CSS, HTML](https://youtu.be/1CVSI3MZNNg?si=oOwU493Bz5hn1Wsw)
 
----
+TODO: *(in no particular order)*
+- [x] Finish tutorial
+- [ ] Break up the code into different files
+- [ ] Change all the textures, font and styling
+- [ ] Add animations
+- [ ] Add a screen before starting the game
+- [ ] Add a restart button on the 'lose' screen
+- [ ] Show highscore for all players
 
-*thb, I've been feeling blue and stressed since I finished my frontend dev studies because I'm still looking for work and the bureaucracy eats away my energy. I found this follow-along in a newsletter and thought it would be a suitable challenge for my little brain, a stepping stone back into the amazing world of programming.*
+BUGS: 
+- [ ] The player dies when falling onto an enemy while jumping onto them kills the enemy, as expected
+- [ ] The enemies don't fall off the world as expected.
+
+--- 
+
+## v.0.4.0
+The tutorial by Ania is done. It was very well made and I highly recommend it! I wouldn't say it is a *finished* game but it is definitely a good base and starting point!
