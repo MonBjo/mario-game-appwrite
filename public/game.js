@@ -1,3 +1,5 @@
+// const { json } = require("express");
+
 const { Client, Account, Databases, ID, Query } = Appwrite;
 
 const client = new Client()
@@ -10,7 +12,7 @@ const database = new Databases(client);
 
 function isLoggedIn() {
     return account.get().then(response => {
-        console.log("response", response);
+        // console.log("response", response);
         if(response) {
             return true;
         }
@@ -61,7 +63,7 @@ function showScore() {
         ).then(response => {
             const highscoreElem = document.getElementById('highscore')
             highscoreElem.textContent = response.documents[0].highscore;
-            console.log("response highscore", response);
+            // console.log("response highscore", response);
         });
     })
 }
@@ -202,6 +204,7 @@ function startGame() {
 
     let isJumping = true;
     
+    
     // https://imgur.com/a/F8Jkryq
     loadRoot('https://i.imgur.com/');
     loadSprite('coin',              'wbKxhcd.png');
@@ -226,44 +229,6 @@ function startGame() {
     scene("game", ({ level, score }) => {
         layers(["bg", "obj", "ui"], "obj");
 
-        const maps = [
-            [
-                '                                      ',
-                '         $ $ $                        ',
-                '          $ $                         ',
-                '                                      ',
-                '                                      ',
-                '         =*=%=                        ',
-                '                                      ',
-                '      =                         -+    ',
-                '===                ^     ^      ()   ^',
-                '======================================',
-            ],
-            [
-                '                  =                   ',
-                '         $$$$$          ==   ==  =    ',
-                '                 =                    ',
-                '                                   =  ',
-                '                                      ',
-                '         =*=%=                        ',
-                '                                     =',
-                '      =                     -+        ',
-                '                   ^     ^  ()        ',
-                '==============================   =====',
-            ],
-            [
-                '£                                                  £',
-                '£                                                  £',
-                '£                                                  £',
-                '£                                                  £',
-                '£                                                  £',
-                '£      @@@@@@                       x x            £',
-                '£                                 x x x            £',
-                '£                               x x x x   x      -+£',
-                '£                   z     z   x x x x x   x      ()£',
-                '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
-            ]
-        ]
 
         const levelConfig = {
             width: 20,
@@ -287,6 +252,7 @@ function startGame() {
             // '' : [ sprite(''), '' ]
         }
 
+        
         const gameLevel = addLevel(maps[level], levelConfig);
 
         const scoreLabel = add([
