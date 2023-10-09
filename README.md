@@ -2,6 +2,10 @@
 I follow along with Ania Kubów as she shows us how to make a web game.
 [2hrs to code Mario with Auth + save scores | JavaScript, CSS, HTML](https://youtu.be/1CVSI3MZNNg?si=oOwU493Bz5hn1Wsw)
 
+Textures found at:
+- [Dino textures](https://arks.itch.io/dino-characters)
+- [World textures](https://rottingpixels.itch.io/nature-platformer-tileset)
+
 TODO: *(in no particular order)*
 - [x] Finish tutorial
 - [ ] Break up the code into different files
