@@ -9,7 +9,9 @@ Textures found at:
 TODO: *(in no particular order)*
 - [x] Finish tutorial
 - [ ] Break up the code into different files
-- [ ] Change all the textures, font and styling
+- [ ] Change all 
+    - [ ] textures
+    - [ ] font and styling
 - [ ] Add animations
 - [ ] Add a screen before starting the game
 - [ ] Add a restart button on the 'lose' screen
