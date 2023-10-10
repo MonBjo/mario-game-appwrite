@@ -186,12 +186,13 @@ function showDisplay() {
 
 showDisplay();
 
+
 // Kaboom game
 function startGame() {
     kaboom({
         global: true,
         fullscreen: true,
-        scale: 2,
+        scale: 3,
         clearColor: [0,0,0,1]
     });
 
@@ -203,61 +204,94 @@ function startGame() {
     const enemySpeed = 20;
 
     let isJumping = true;
+
+
+    loadRoot("assets/");
+    loadSprite("doux", "sprites/DinoSprites_doux.gif", {
+        sliceX: 24,
+        sliceY: 0,
+        anims: {
+            idle: {
+                from: 0,
+                to: 2,
+                speed: 6,
+                loop: true
+            },
+            run: {
+                from: 3,
+                to: 9,
+                speed: 12,
+                loop: true
+            },
+            kick: {
+                from: 10, 
+                to: 12,
+                speed: 6,
+                loop: false
+            },
+            hurt: {
+                from: 13,
+                to: 16,
+                speed: 8,
+                loop: false
+            },
+            sneak: {
+                from: 17,
+                to: 23,
+                speed: 14,
+                loop: true
+            },
+            jump: 21
+        },
+    });
+    loadSprite("grass", "sprites/nature-platformer-tileset-16x16.png", {
+        sliceX: 7,
+        sliceY: 11,
+        // area: {vec2: [16, 0], vec2: [32, 16]}
+        // area: {
+        //     x: 16,
+        //     y: 0,
+        //     width: 16,
+        //     height: 16,
+        // }
+    });
     
-    
-    // https://imgur.com/a/F8Jkryq
-    loadRoot('https://i.imgur.com/');
-    loadSprite('coin',              'wbKxhcd.png');
-    loadSprite('evil-shroom',       'KPO3fR9.png');
-    loadSprite('brick',             'pogC9x5.png');
-    loadSprite('block',             'M6rwarW.png');
-    loadSprite('mario',             'Wb1qfhK.png');
-    loadSprite('mushroom',          '0wMd92p.png');
-    loadSprite('surprise',          'gesQ1KP.png');
-    loadSprite('unboxed',           'bdrLpi6.png');
-    loadSprite('pipe-top-left',     'ReTPiWY.png');
-    loadSprite('pipe-top-right',    'hj2GK4n.png');
-    loadSprite('pipe-bottom-left',  'c1cYSbt.png');
-    loadSprite('pipe-bottom-right', 'nqQ79eI.png');
-    loadSprite('blue-block',        'fVscIbn.png');
-    loadSprite('blue-brick',        '3e5YRQd.png');
-    loadSprite('blue-steel',        'gqVoI2b.png');
-    loadSprite('blue-evil-shroom',  'SvV4ueD.png');
-    loadSprite('blue-surprise',     'RMqCc1G.png');
-    // loadSprite('','.png');
 
     scene("game", ({ level, score }) => {
         layers(["bg", "obj", "ui"], "obj");
-
+        // gravity(0);
 
         const levelConfig = {
-            width: 20,
-            height: 20,
-            '=' : [ sprite('block'),                solid() ],
-            '$' : [ sprite('coin'),                                     'coin' ],
-            '%' : [ sprite('surprise'),             solid(),            'coin-surprise' ],
-            '*' : [ sprite('surprise'),             solid(),            'mushroom-surprise' ],
-            '}' : [ sprite('unboxed'),              solid() ],
-            '(' : [ sprite('pipe-bottom-left'),     solid(), scale(0.5) ],
-            ')' : [ sprite('pipe-bottom-right'),    solid(), scale(0.5) ],
-            '-' : [ sprite('pipe-top-left'),        solid(), scale(0.5), 'pipe' ],
-            '+' : [ sprite('pipe-top-right'),       solid(), scale(0.5), 'pipe' ],
-            '^' : [ sprite('evil-shroom'),                               'dangerous', body() ],
-            '#' : [ sprite('mushroom'),             solid(),             'mushroom', body() ],
-            '!' : [ sprite('blue-block'),           solid(), scale(0.5) ],
-            '£' : [ sprite('blue-brick'),           solid(), scale(0.5) ],
-            'z' : [ sprite('blue-evil-shroom'),              scale(0.5), 'dangerous', body() ],
-            '@' : [ sprite('blue-surprise'),        solid(), scale(0.5), 'coin-surprise' ],
-            'x' : [ sprite('blue-steel'),           solid(), scale(0.5), ],
-            // '' : [ sprite(''), '' ]
-        }
+            width: 16,
+            height: 16,
+            '(' : [ sprite('grass'),                   solid(), {frame:0} ],
+            '=' : [ sprite('grass'),                   solid(), {frame:1} ],
+            ')' : [ sprite('grass'),                   solid(), {frame:2} ],
 
+            '{' : [ sprite('grass'),                   solid(), {frame:3} ],
+            '~' : [ sprite('grass'),                   solid(), {frame:4} ],
+            '}' : [ sprite('grass'),                   solid(), {frame:5} ],
+
+            '[' : [ sprite('grass'),                   solid(), {frame:7} ],
+            '-' : [ sprite('grass'),                   solid(), {frame:8} ],
+            ']' : [ sprite('grass'),                   solid(), {frame:9} ],
+            // '$' : [ sprite('coin'),                                     'coin' ],
+            // '%' : [ sprite('surprise'),             solid(),            'coin-surprise' ],
+            // '*' : [ sprite('surprise'),             solid(),            'mushroom-surprise' ],
+            // '}' : [ sprite('unboxed'),              solid() ],
+            // '(' : [ sprite('pipe-bottom-left'),     solid(), scale(0.5) ],
+            // ')' : [ sprite('pipe-bottom-right'),    solid(), scale(0.5) ],
+            // '-' : [ sprite('pipe-top-left'),        solid(), scale(0.5), 'pipe' ],
+            // '+' : [ sprite('pipe-top-right'),       solid(), scale(0.5), 'pipe' ],
+            // '^' : [ sprite('evil-shroom'),                               'dangerous', body() ],
+            // '#' : [ sprite('mushroom'),             solid(),             'mushroom', body() ],
+        }
         
         const gameLevel = addLevel(maps[level], levelConfig);
 
         const scoreLabel = add([
             text(score),
-            pos(30, 6),
+            pos(10, 6),
             layer('ui'),
             {
                 value: score
@@ -269,110 +303,129 @@ function startGame() {
             pos(40, 6)
         ]);
 
-
-        const player = add([
-            sprite('mario', solid()),
-            pos(30, 0),
+        const dino = add([
+            sprite("doux", solid()),
+            pos(33, height()/3),
             body(),
-            big(),
-            origin('bot')
+            area(vec2(-7, -4), vec2(7, -16)),
+            // big(),
+            origin('bot'),
+            {
+                width: 16,
+                height: 16
+            }
         ]);
+        console.log("dino", dino, dino.numFrames());
+        dino.play("idle");
+        
+        // function big() {
+        //     let timer = 0;
+        //     let isBig = false;
+        //     return {
+        //         update() {
+        //             if(isBig) {
+        //                 currentJumpForce = bigJumpForce;
+        //                 timer -= dt();
+        //                 if(timer <= 0) {
+        //                     this.smallify();
+        //                 }
+        //             }
+        //         },
+        //         isBig() {
+        //             return isBig;
+        //         },
+        //         smallify() {
+        //             this.scale = vec2(1);
+        //             currentJumpForce = jumpForce;
+        //             timer = 0;
+        //             isBig = false;
+        //         },
+        //         biggify(time) {
+        //             this.scale = vec2(2);
+        //             timer = time;
+        //             isBig = true;
 
-        function big() {
-            let timer = 0;
-            let isBig = false;
-            return {
-                update() {
-                    if(isBig) {
-                        currentJumpForce = bigJumpForce;
-                        timer -= dt();
-                        if(timer <= 0) {
-                            this.smallify();
-                        }
-                    }
-                },
-                isBig() {
-                    return isBig;
-                },
-                smallify() {
-                    this.scale = vec2(1);
-                    currentJumpForce = jumpForce;
-                    timer = 0;
-                    isBig = false;
-                },
-                biggify(time) {
-                    this.scale = vec2(2);
-                    timer = time;
-                    isBig = true;
+        //         }
+        //     }
+        // }
 
-                }
-            }
-        }
+        // dino.collides('pipe', () => {
+        //     keyPress('s', () => {
+        //         go('game', {
+        //             level: (level + 1) % maps.length,
+        //             score: scoreLabel.value
+        //         })
+        //     })
+        // })
+        // dino.collides('dangerous', (danger) => {
+        //     if(isJumping) {
+        //         destroy(danger);
+        //     } else {
+        //         go('lose', {score: scoreLabel.value});
+        //     }
+        // });
+        // dino.collides('coin', (coin) => {
+        //     destroy(coin);
+        //     scoreLabel.value++;
+        //     scoreLabel.text = scoreLabel.value;
+        // });
+        // dino.on('headbump', (object) => {
+        //     if(object.is('coin-surprise')) {
+        //         gameLevel.spawn('$', object.gridPos.sub(0,1));
+        //         destroy(object);
+        //         gameLevel.spawn('}', object.gridPos.add(0,0));
+        //     } else if(object.is('mushroom-surprise')) {
+        //         gameLevel.spawn('#', object.gridPos.sub(0,1));
+        //         destroy(object);
+        //         gameLevel.spawn('}', object.gridPos.add(0,0));
+        //     }
+        // });
+        // dino.collides('mushroom', (mushroom) => {
+        //     destroy(mushroom);
+        //     dino.biggify(6);
+        // });
 
-        player.collides('pipe', () => {
-            keyPress('s', () => {
-                go('game', {
-                    level: (level + 1) % maps.length,
-                    score: scoreLabel.value
-                })
-            })
-        })
-        player.collides('dangerous', (danger) => {
-            if(isJumping) {
-                destroy(danger);
-            } else {
-                go('lose', {score: scoreLabel.value});
-            }
-        });
-        player.collides('coin', (coin) => {
-            destroy(coin);
-            scoreLabel.value++;
-            scoreLabel.text = scoreLabel.value;
-        });
-        player.on('headbump', (object) => {
-            if(object.is('coin-surprise')) {
-                gameLevel.spawn('$', object.gridPos.sub(0,1));
-                destroy(object);
-                gameLevel.spawn('}', object.gridPos.add(0,0));
-            } else if(object.is('mushroom-surprise')) {
-                gameLevel.spawn('#', object.gridPos.sub(0,1));
-                destroy(object);
-                gameLevel.spawn('}', object.gridPos.add(0,0));
-            }
-        });
-        player.collides('mushroom', (mushroom) => {
-            destroy(mushroom);
-            player.biggify(6);
-        });
-
-        player.action(() => {
-            if(player.grounded()) {
-                isJumping = false;
-            }
-        });
-        player.action(() => {
-            camPos(player.pos);
-            if(player.pos.y >= fallDeath){
+        // dino.action(() => {
+        //     if(dino.grounded()) {
+        //         isJumping = false;
+        //     }
+        // });
+        dino.action(() => {
+            camPos(dino.pos);
+            if(dino.pos.y >= fallDeath){
                 go('lose', {score: scoreLabel.value})
             }
         });
 
-        action('dangerous', (danger) => {
-            danger.move(-enemySpeed, 0);
-        })
-        action('mushroom', (mushroom) => {
-            mushroom.move(20, 0);
-        })
+        // action('dangerous', (danger) => {
+        //     danger.move(-enemySpeed, 0);
+        // })
+        // action('mushroom', (mushroom) => {
+        //     mushroom.move(20, 0);
+        // })
 
 
-        keyDown('a', () => player.move(-moveSpeed, 0));
-        keyDown('d', () => player.move(moveSpeed, 0));
-        keyDown('left', () => player.move(-moveSpeed, 0));
-        keyDown('right', () => player.move(moveSpeed, 0));
+        keyDown('a', () => {
+            dino.move(-moveSpeed, 0);
+            // dino.play("run");
+        });
+        keyDown('d', () => {
+            dino.move(moveSpeed, 0);
+            // dino.play("run");
+        });
+        keyDown('left', () => {
+            dino.move(-moveSpeed, 0);
+            // dino.play("run");
+        });
+        keyDown('right', () => {
+            dino.move(moveSpeed, 0);
+            // dino.play("run");
+        });
         keyPress('space', () => {
-            if(player.grounded()) {
+            if(dino.grounded()) {
                 isJumping = true;
-                player.jump(currentJumpForce);
+                dino.jump(currentJumpForce);
+                dino.play("jump");    
             }
         });
 
