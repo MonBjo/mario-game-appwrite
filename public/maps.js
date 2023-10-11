@@ -6,8 +6,8 @@ const maps = [
         'I                                     ',
         '                                      ',
         'o                                     ',
-        'Oo      ii                           F',
-        '(0000)  Aa    J    j                 ?',
+        'Oo      ii                        F  F',
+        '(0000)  Aa    J    j              g  ?',
         '[1111]       A3a   v     K k L l  x  f',
         '<2222>yyyyyyyyyyyyyyyA333333333333333a'
     ],
