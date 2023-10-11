@@ -193,7 +193,7 @@ function startGame() {
         global: true,
         fullscreen: true,
         scale: 3,
-        clearColor: [0,0,0,1]
+        clearColor: [0.2,0.2,0.2,0.8]
     });
 
     const moveSpeed = 120;
@@ -357,8 +357,8 @@ function startGame() {
         const gameLevel = addLevel(maps[level], levelConfig);
 
         const scoreLabel = add([
-            text(score),
-            pos(10, 6),
+            text('Gems ' + score),
+            pos(100, 6),
             layer('ui'),
             {
                 value: score
@@ -366,8 +366,8 @@ function startGame() {
         ]);
 
         add([
-            text(' level ' + parseInt(level + 1)),
-            pos(40, 6)
+            text(' Level ' + parseInt(level + 1)),
+            pos(10, 6)
         ]);
 
         const dino = add([
@@ -434,7 +434,11 @@ function startGame() {
         dino.collides('coin', (coin) => {
             destroy(coin);
             scoreLabel.value++;
-            scoreLabel.text = scoreLabel.value;
+            scoreLabel.text = 'Gems ' + scoreLabel.value;
+
+            // It's a start
+            const highscoreElem = document.getElementById('highscore')
+            highscoreElem.textContent += 'Gems ' + scoreLabel.value;
         });
         dino.collides('water', () => {
             wait(0.05, () => {
