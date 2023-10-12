@@ -9,15 +9,17 @@ Assets:
 TODO: *(in no particular order)*
 - [x] Finish tutorial
 - [ ] Break up the code into different files
-- [ ] Change all 
+- [ ] Update to new
     - [x] textures
     - [ ] font and styling
 - [ ] Add animations
 - [ ] Add a screen before starting the game
 - [ ] Add a restart button on the 'lose' screen
 - [ ] Show highscore for all players
-- [ ] Keep gems and level text inside field when playing
+- [x] Keep gems and level text inside field when playing
 - [ ] Add health
+- [ ] Create more levels
+- [ ] Add a background
 
 BUGS: 
 - [ ] The player dies when falling onto an enemy while jumping onto them kills the enemy, as expected

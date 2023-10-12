@@ -163,16 +163,22 @@ function showDisplay() {
             modalElem.classList.add('hidden');
             const logoutButtonElem = document.getElementById('logout-button');
             logoutButtonElem.classList.remove('hidden');
-            const highscoreTagElem = document.getElementById('highscore-tag');
-            highscoreTagElem.classList.remove('hidden');
+            const gameInfoElems = document.querySelectorAll('.gameInfo');
+            console.log(gameInfoElems);
+            for(let elem of gameInfoElems){
+                elem.classList.remove('hidden');
+            }
+
             startGame();
         } else {
             const modalElem = document.getElementById('modal');
             modalElem.classList.remove('hidden');
             const logoutButtonElem = document.getElementById('logout-button');
             logoutButtonElem.classList.add('hidden');
-            const highscoreTagElem = document.getElementById('highscore-tag');
-            highscoreTagElem.classList.add('hidden');
+            const gameInfoElems = document.querySelectorAll('gameInfo');
+            for(let elem of gameInfoElems){
+                elem.classList.add('hidden');
+            }
 
             const usernameElem = document.getElementById('username');
             usernameElem.textContent = "";
@@ -206,8 +212,8 @@ function startGame() {
     let isJumping = true;
 
 
-    loadRoot("assets/");
-    loadSprite("doux", "sprites/DinoSprites-doux.png", {
+    // loadRoot("../assets/");
+    loadSprite("doux", "../assets/sprites/DinoSprites-doux.png", {
         sliceX: 24,
         sliceY: 0,
         anims: {
@@ -247,7 +253,7 @@ function startGame() {
             }
         },
     });
-    loadSprite("tiles", "sprites/nature-platformer-tileset-16x16.png", {
+    loadSprite("tiles", "../assets/sprites/nature-platformer-tileset-16x16.png", {
         sliceX: 7,
         sliceY: 11,
     });
@@ -359,19 +365,22 @@ function startGame() {
         
         const gameLevel = addLevel(maps[level], levelConfig);
 
-        const scoreLabel = add([
-            text('Gems ' + score),
-            pos(100, 6),
-            layer('ui'),
-            {
-                value: score
-            }
-        ]);
+        // const scoreLabel = add([
+        //     text('Gems ' + score),
+        //     pos(100, 6),
+        //     layer('ui'),
+        //     {
+        //         value: score
+        //     }
+        // ]);
 
-        add([
-            text(' Level ' + parseInt(level + 1)),
-            pos(10, 6)
-        ]);
+        // add([
+        //     text(' Level ' + parseInt(level + 1)),
+        //     pos(10, 6)
+        // ]);
+
+        const levelElem = document.getElementById('level');
+        levelElem.textContent = level + 1;
 
         const dino = add([
             sprite("doux", solid()),
@@ -437,11 +446,11 @@ function startGame() {
         dino.collides('coin', (coin) => {
             destroy(coin);
             scoreLabel.value++;
-            scoreLabel.text = 'Gems ' + scoreLabel.value;
+            // scoreLabel.text = 'Gems ' + scoreLabel.value;
+            scoreLabel.text = scoreLabel.value;
 
-            // It's a start
-            const highscoreElem = document.getElementById('highscore')
-            highscoreElem.textContent += 'Gems ' + scoreLabel.value;
+            const gemsElem = document.getElementById('gems');
+            gemsElem.textContent = scoreLabel.value;
         });
         dino.collides('water', () => {
             wait(0.05, () => {

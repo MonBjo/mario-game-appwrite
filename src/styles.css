@@ -4,6 +4,8 @@
     box-sizing: border-box;
     font-family: 'VT323', monospace;
     font-size: xx-large;
+    padding: 0;
+    margin: 0;
 }
 
 body {
