@@ -2,9 +2,11 @@
 I follow along with Ania Kubów as she shows us how to make a web game.
 [2hrs to code Mario with Auth + save scores | JavaScript, CSS, HTML](https://youtu.be/1CVSI3MZNNg?si=oOwU493Bz5hn1Wsw)
 
-Assets:
+Made with:
 - The cute dinosarus are made by [Arks Digital](https://twitter.com/ArksDigital) on [itch.io](https://arks.itch.io/dino-characters)
 - The pretty world are made by [Rotting Pixels](https://twitter.com/PixelsRotting) on [itch.io](https://rottingpixels.itch.io/nature-platformer-tileset)
+- [Kaboom Legacy](https://legacy.kaboomjs.com/) for animations
+- [Appwrite](https://appwrite.io/) as a database and user auth. *Similar to googels firebase.*
 
 TODO: *(in no particular order)*
 - [x] Finish tutorial
