@@ -207,20 +207,20 @@ function startGame() {
 
 
     loadRoot("assets/");
-    loadSprite("doux", "sprites/DinoSprites_doux.gif", {
+    loadSprite("doux", "sprites/DinoSprites-doux.png", {
         sliceX: 24,
         sliceY: 0,
         anims: {
             idle: {
                 from: 0,
                 to: 2,
-                speed: 6,
+                speed: 12,
                 loop: true
             },
             run: {
                 from: 3,
                 to: 9,
-                speed: 12,
+                speed: 24,
                 loop: true
             },
             kick: {
@@ -232,7 +232,7 @@ function startGame() {
             hurt: {
                 from: 13,
                 to: 16,
-                speed: 8,
+                speed: 16,
                 loop: false
             },
             sneak: {
@@ -241,7 +241,10 @@ function startGame() {
                 speed: 14,
                 loop: true
             },
-            jump: 21
+            jump: {
+                from: 21,
+                to: 21
+            }
         },
     });
     loadSprite("tiles", "sprites/nature-platformer-tileset-16x16.png", {
@@ -444,7 +447,7 @@ function startGame() {
             wait(0.05, () => {
                 isJumping = true;
                 dino.jump(currentJumpForce*1.5);
-                // dino.play("hurt");  
+                dino.play("hurt");  
             });
         })
         // dino.on('headbump', (object) => {
@@ -485,19 +488,14 @@ function startGame() {
 
         keyDown('a', () => {
             dino.move(-moveSpeed, 0);
-            // dino.play("run");
+            dino.play("run");
         });
         keyDown('d', () => {
             dino.move(moveSpeed, 0);
-            // dino.play("run");
+            dino.play("run");
         });
-        keyDown('left', () => {
-            dino.move(-moveSpeed, 0);
-            // dino.play("run");
-        });
-        keyDown('right', () => {
-            dino.move(moveSpeed, 0);
-            // dino.play("run");
+        keyDown('s',() => {
+            dino.play("sneak");
         });
         keyPress('space', () => {
             if(dino.grounded()) {
@@ -505,6 +503,9 @@ function startGame() {
                 dino.jump(currentJumpForce);
                 dino.play("jump");    
             }
+        });
+        keyRelease(['a', 'd', 's', 'space'], () => {
+            dino.play("idle");
         });
 
 
