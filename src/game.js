@@ -32,7 +32,7 @@ function displayUserName() {
     }).catch(error => console.log("error", error));
 }
 
-function updateScore(score) {
+function updateHighscore(score) {
     const currentHighscore = document.getElementById('highscore').textContent;
     if(Number(score) > Number(currentHighscore)) {
         getUserId().then(userId => {
@@ -208,9 +208,9 @@ function startGame() {
     let currentJumpForce = jumpForce;
     const fallDeath = 400;
     const enemySpeed = 20;
-
     let isJumping = true;
-
+    
+    let scoreLabel = 0;
 
     // loadRoot("../assets/");
     loadSprite("doux", "../assets/sprites/DinoSprites-doux.png", {
@@ -379,8 +379,13 @@ function startGame() {
         //     pos(10, 6)
         // ]);
 
+        
         const levelElem = document.getElementById('level');
         levelElem.textContent = level + 1;
+        
+        // scorelabel = 0;
+        // const gemsElem = document.getElementById('gems');
+        // gemsElem.textContent = scoreLabel;
 
         const dino = add([
             sprite("doux", solid()),
@@ -432,7 +437,7 @@ function startGame() {
             keyPress('s', () => {
                 go('game', {
                     level: (level + 1) % maps.length,
-                    score: scoreLabel.value
+                    score: scoreLabel
                 })
             })
         });
@@ -445,12 +450,11 @@ function startGame() {
         // });
         dino.collides('coin', (coin) => {
             destroy(coin);
-            scoreLabel.value++;
+            scoreLabel++;
             // scoreLabel.text = 'Gems ' + scoreLabel.value;
-            scoreLabel.text = scoreLabel.value;
-
+            // scoreLabel.text = scoreLabel.value;
             const gemsElem = document.getElementById('gems');
-            gemsElem.textContent = scoreLabel.value;
+            gemsElem.textContent = scoreLabel;
         });
         dino.collides('water', () => {
             wait(0.05, () => {
@@ -483,7 +487,7 @@ function startGame() {
         dino.action(() => {
             camPos(dino.pos);
             if(dino.pos.y >= fallDeath){
-                go('lose', {score: scoreLabel.value})
+                go('lose', {score: scoreLabel})
             }
         });
 
@@ -519,8 +523,23 @@ function startGame() {
 
 
         scene('lose', ({score}) => {
-            add([ text(score, 32), origin('center'), pos(width()/2, height()/2) ]);
-            updateScore(score);
+            function gemsText() {
+                if(score == 1) {
+                    return "gem";
+                } else {
+                    return "gems";
+                }
+            }
+            add([ text(`Score ${score} ${gemsText()}`, 24), origin('center'), pos(width()/2, height()/2) ]);
+            add([ text(`Press [ENTER] to play again \n or [ESC] to quit`, 10), origin('center'), pos(width()/2, height()/1.5) ]);
+            updateHighscore(score);
+
+            keyPress('enter', () => {
+                console.log("ENTER!");
+            });
+            keyPress('escape', () => {
+                console.log("ESC!");
+            });
         })
 
     })
