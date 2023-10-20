@@ -266,13 +266,13 @@ function startGame() {
             "height": 16
         },
         "dirt-top-center": {
-            "x": 0,
+            "x": 16,
             "y": 0,
             "width": 16,
             "height": 16
         },
         "dirt-top-right": {
-            "x": 0,
+            "x": 32,
             "y": 0,
             "width": 16,
             "height": 16
@@ -423,7 +423,8 @@ function startGame() {
             sprite("doux"),
             pos(25, height()/4),
             body(),
-            area(vec2(-7, -4), vec2(7, -16)),
+            area(),
+            // area(vec2(-7, -4), vec2(7, -16)),
             // big(),
             // origin('bot'),
             // {
@@ -568,6 +569,7 @@ function startGame() {
 
             keyPress('enter', () => {
                 console.log("ENTER!");
+                restart();
             });
             keyPress('escape', () => {
                 console.log("ESC!");
