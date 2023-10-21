@@ -215,7 +215,6 @@ function startGame() {
     
     let scoreLabel = 0;
 
-    // TODO: When sneaking one frame has bigger pupils than the others
 
     // loadRoot("../assets/");
     loadSpriteAtlas("../assets/sprites/DinoSprites-doux.png", {
