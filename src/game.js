@@ -215,48 +215,57 @@ function startGame() {
     
     let scoreLabel = 0;
 
+    // TODO: When sneaking one frame has bigger pupils than the others
+
     // loadRoot("../assets/");
-    loadSprite("doux", "../assets/sprites/DinoSprites-doux.png", {
-        sliceX: 24,
-        sliceY: 0,
-        anims: {
-            idle: {
-                from: 0,
-                to: 2,
-                speed: 12,
-                loop: true
+    loadSpriteAtlas("../assets/sprites/DinoSprites-doux.png", {
+        "doux": {
+            x: 1,
+            y: 1,
+            width: 575,
+            height: 23,
+            sliceX: 24,
+            anims: {
+                idle: {
+                    from: 0,
+                    to: 2,
+                    speed: 6,
+                    loop: true
+                },
+                run: {
+                    from: 3,
+                    to: 9,
+                    speed: 14,
+                    loop: true
+                },
+                kick: {
+                    from: 10, 
+                    to: 12,
+                    speed: 6,
+                    loop: false
+                },
+                hurt: {
+                    from: 13,
+                    to: 16,
+                    speed: 8,
+                    loop: false
+                },
+                sneak: {
+                    from: 17,
+                    to: 23,
+                    speed: 14,
+                    loop: true
+                },
+                jump: {
+                    from: 21,
+                    to: 21
+                }
             },
-            run: {
-                from: 3,
-                to: 9,
-                speed: 24,
-                loop: true
-            },
-            kick: {
-                from: 10, 
-                to: 12,
-                speed: 6,
-                loop: false
-            },
-            hurt: {
-                from: 13,
-                to: 16,
-                speed: 16,
-                loop: false
-            },
-            sneak: {
-                from: 17,
-                to: 23,
-                speed: 14,
-                loop: true
-            },
-            jump: {
-                from: 21,
-                to: 21
-            }
-        },
+        }
     });
     loadSpriteAtlas("../assets/sprites/nature-platformer-tileset-16x16.png", {
+        x: 0,
+        y: 0,
         sliceX: 7,
         sliceY: 11,
         "dirt-top-left": {
@@ -276,118 +285,518 @@ function startGame() {
             "y": 0,
             "width": 16,
             "height": 16
+        },
+        "dirt-middle-left": {
+            "x": 0,
+            "y": 16,
+            "width": 16,
+            "height": 16
+        },
+        "dirt-middle-center": {
+            "x": 16,
+            "y": 16,
+            "width": 16,
+            "height": 16
+        },
+        "dirt-middle-right": {
+            "x": 32,
+            "y": 16,
+            "width": 16,
+            "height": 16
+        },
+        "dirt-bottom-left": {
+            "x": 0,
+            "y": 32,
+            "width": 16,
+            "height": 16
+        },
+        "dirt-bottom-center": {
+            "x": 16,
+            "y": 32,
+            "width": 16,
+            "height": 16
+        },
+        "dirt-bottom-right": {
+            "x": 32,
+            "y": 32,
+            "width": 16,
+            "height": 16
+        },
+        "dirt-floor-left": {
+            "x": 48,
+            "y": 0,
+            "width": 16,
+            "height": 16
+        },
+        "dirt-floor-center": {
+            "x": 64,
+            "y": 0,
+            "width": 16,
+            "height": 16
+        },
+        "dirt-floor-right": {
+            "x": 80,
+            "y": 0,
+            "width": 16,
+            "height": 16
+        },
+        "brick-wall-top": {
+            "x": 96,
+            "y": 0,
+            "width": 16,
+            "height": 16
+        },
+        "brick-wall-middle": {
+            "x": 96,
+            "y": 16,
+            "width": 16,
+            "height": 16
+        },
+        "brick-wall-bottom": {
+            "x": 96,
+            "y": 32,
+            "width": 16,
+            "height": 16
+        },
+        "brick-floor-left": {
+            "x": 0,
+            "y": 96,
+            "width": 16,
+            "height": 16
+        },
+        "brick-floor-center": {
+            "x": 16,
+            "y": 96,
+            "width": 16,
+            "height": 16
+        },
+        "brick-floor-right": {
+            "x": 32,
+            "y": 96,
+            "width": 16,
+            "height": 16
+        },
+        "brick-top-left": {
+            "x": 48,
+            "y": 32,
+            "width": 16,
+            "height": 16
+        },
+        "brick-top-center": {
+            "x": 64,
+            "y": 32,
+            "width": 16,
+            "height": 16
+        },
+        "brick-top-right": {
+            "x": 80,
+            "y": 32,
+            "width": 16,
+            "height": 16
+        },
+        "brick-middle-left": {
+            "x": 48,
+            "y": 48,
+            "width": 16,
+            "height": 16
+        },
+        "brick-middle-center": {
+            "x": 64,
+            "y": 48,
+            "width": 16,
+            "height": 16
+        },
+        "brick-middle-right": {
+            "x": 80,
+            "y": 48,
+            "width": 16,
+            "height": 16
+        },
+        "brick-bottom-left": {
+            "x": 48,
+            "y": 64,
+            "width": 16,
+            "height": 16
+        },
+        "brick-bottom-center": {
+            "x": 64,
+            "y": 64,
+            "width": 16,
+            "height": 16
+        },
+        "brick-bottom-right": {
+            "x": 80,
+            "y": 64,
+            "width": 16,
+            "height": 16
+        },
+        "brick-smooth-cracked": {
+            "x": 96,
+            "y": 64,
+            "width": 16,
+            "height": 16
+        },
+        "brick-smooth": {
+            "x": 96,
+            "y": 80,
+            "width": 16,
+            "height": 16
+        },
+        "ladder-top": {
+            "x": 0,
+            "y": 48,
+            "width": 16,
+            "height": 16
+        },
+        "ladder-middle": {
+            "x": 0,
+            "y": 64,
+            "width": 16,
+            "height": 16
+        },
+        "ladder-bottom": {
+            "x": 0,
+            "y": 80,
+            "width": 16,
+            "height": 16
+        },
+        "tall-plant-top": {
+            "x": 16,
+            "y": 48,
+            "width": 16,
+            "height": 16
+        },
+        "tall-plant-middle": {
+            "x": 16,
+            "y": 64,
+            "width": 16,
+            "height": 16
+        },
+        "tall-plant-bottom": {
+            "x": 16,
+            "y": 80,
+            "width": 16,
+            "height": 16
+        },
+        "tree-top": {
+            "x": 32,
+            "y": 48,
+            "width": 16,
+            "height": 16
+        },
+        "tree-middle": {
+            "x": 32,
+            "y": 64,
+            "width": 16,
+            "height": 16
+        },
+        "tree-bottom": {
+            "x": 32,
+            "y": 80,
+            "width": 16,
+            "height": 16
+        },
+        "tree-bottom-variant1": {
+            "x": 48,
+            "y": 80,
+            "width": 16,
+            "height": 16
+        },
+        "tree-bottom-variant2": {
+            "x": 64,
+            "y": 80,
+            "width": 16,
+            "height": 16
+        },
+        "coin-yellow": {
+            "x": 80,
+            "y": 112,
+            "width": 16,
+            "height": 16
+        },
+        "coin-red": {
+            "x": 96,
+            "y": 112,
+            "width": 16,
+            "height": 16
+        },
+        "coin-blue": {
+            "x": 80,
+            "y": 128,
+            "width": 16,
+            "height": 16
+        },
+        "coin-green": {
+            "x": 96,
+            "y": 128,
+            "width": 16,
+            "height": 16
+        },
+        "potion-green": {
+            "x": 0,
+            "y": 128,
+            "width": 16,
+            "height": 16
+        },
+        "potion-red": {
+            "x": 16,
+            "y": 128,
+            "width": 16,
+            "height": 16
+        },
+        "potion-brown": {
+            "x": 0,
+            "y": 144,
+            "width": 16,
+            "height": 16
+        },
+        "potion-yellow": {
+            "x": 16,
+            "y": 144,
+            "width": 16,
+            "height": 16
+        },
+        "cloud-big-top-left": {
+            "x": 32,
+            "y": 112,
+            "width": 16,
+            "height": 16
+        },
+        "cloud-big-top-right": {
+            "x": 48,
+            "y": 112,
+            "width": 16,
+            "height": 16
+        },
+        "cloud-big-bottom-left": {
+            "x": 32,
+            "y": 118,
+            "width": 16,
+            "height": 16
+        },
+        "cloud-big-bottom-right": {
+            "x": 48,
+            "y": 118,
+            "width": 16,
+            "height": 16
+        },
+        "cloud-small-top-left": {
+            "x": 32,
+            "y": 134,
+            "width": 16,
+            "height": 16
+        },
+        "cloud-small-top-right": {
+            "x": 48,
+            "y": 134,
+            "width": 16,
+            "height": 16
+        },
+        "cloud-small-bottom-left": {
+            "x": 32,
+            "y": 150,
+            "width": 16,
+            "height": 16
+        },
+        "cloud-small-bottom-right": {
+            "x": 48,
+            "y": 150,
+            "width": 16,
+            "height": 16
+        },
+        "cloud-doublecorner-top": {
+            "x": 64,
+            "y": 112,
+            "width": 16,
+            "height": 16
+        },
+        "cloud-doublecorner-bottom": {
+            "x": 64,
+            "y": 128,
+            "width": 16,
+            "height": 16
+        },
+        "cloud-solid": {
+            "x": 64,
+            "y": 144,
+            "width": 16,
+            "height": 16
+        },
+        "sky-solid": {
+            "x": 64,
+            "y": 160,
+            "width": 16,
+            "height": 16
+        },
+        "flower-small": {
+            "x": 48,
+            "y": 96,
+            "width": 16,
+            "height": 16
+        },
+        "flower-big": {
+            "x": 64,
+            "y": 96,
+            "width": 16,
+            "height": 16
+        },
+        "rock-small": {
+            "x": 80,
+            "y": 96,
+            "width": 16,
+            "height": 16
+        },
+        "rock-big": {
+            "x": 96,
+            "y": 96,
+            "width": 16,
+            "height": 16
+        },
+        "wood-horizontal": {
+            "x": 0,
+            "y": 112,
+            "width": 16,
+            "height": 16
+        },
+        "wood-vertical": {
+            "x": 16,
+            "y": 112,
+            "width": 16,
+            "height": 16
+        },
+        "single-dirt-block": {
+            "x": 48,
+            "y": 16,
+            "width": 16,
+            "height": 16
+        },
+        "single-brick-block": {
+            "x": 96,
+            "y": 48,
+            "width": 16,
+            "height": 16
+        },
+        "dirt-cave": {
+            "x": 64,
+            "y": 16,
+            "width": 16,
+            "height": 16
+        },
+        "water": {
+            "x": 80,
+            "y": 80,
+            "width": 16,
+            "height": 16
         }
     });
 
     scene("game", ({ level, score }) => {
         // layers(["bg", "obj", "ui"], "obj");
-        // gravity(0);
+        setGravity(1000);
 
         console.log("score at scene() start: ", score);
 
+
         const levelConfig = {
-            tileWidth: 15,
-            tileHeight: 15,
+            tileWidth: 16,
+            tileHeight: 16,
             tiles: {
-                '(' : () => [ sprite('dirt-top-left'), area(), body({ isStatic: true }) ],
-                '0' : () => [ sprite('dirt-top-center'), area(), body({ isStatic: true }) ],
+                // Dirt top 
+                '(' : () => [ sprite('dirt-top-left'), area(), body({ isStatic: true }), ],
+                '0' : () => [ sprite('dirt-top-center'), area(), body({ isStatic: true }), ],
                 ')' : () => [ sprite('dirt-top-right'), area(), body({ isStatic: true }) ],
-                // Dirt top
-                // '(' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:0} ],
-                // '0' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:1} ],
-                // ')' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:2} ],
-                // // Dirt middle
-                // '[' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:7} ],
-                // '1' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:8} ],
-                // ']' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:9} ],
-                // // Dirt bottom
-                // '<' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:14} ],
-                // '2' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:15} ],
-                // '>' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:16} ],
-                // // Dirt floor
-                // 'A' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:3} ],
-                // '3' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:4} ],
-                // 'a' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:5} ],
+                // Dirt middle
+                '[' : () => [ sprite('dirt-middle-left'), area(), body({ isStatic: true }) ],
+                '1' : () => [ sprite('dirt-middle-center'), area(), body({ isStatic: true }) ],
+                ']' : () => [ sprite('dirt-middle-right'), area(), body({ isStatic: true }) ],
+                // Dirt bottom
+                '<' : () => [ sprite('dirt-bottom-left'), area(), body({ isStatic: true }) ],
+                '2' : () => [ sprite('dirt-bottom-center'), area(), body({ isStatic: true }) ],
+                '>' : () => [ sprite('dirt-bottom-right'), area(), body({ isStatic: true }) ],
+                // Dirt floor
+                'A' : () => [ sprite('dirt-floor-left'), area(), body({ isStatic: true }) ],
+                '3' : () => [ sprite('dirt-floor-center'), area(), body({ isStatic: true }) ],
+                'a' : () => [ sprite('dirt-floor-right'), area(), body({ isStatic: true }) ],
                 // // Brick wall
-                // 'B' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:6} ],
-                // '4' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:13} ],
-                // 'b' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:20} ],
-                // // Brick floor
-                // 'C' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:42} ],
-                // '5' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:43} ],
-                // 'c' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:44} ],
-                // // Brick top
-                // ',' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:17} ],
-                // '6' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:18} ],
-                // '.' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:19} ],
-                // // Brick middle
-                // ';' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:24} ],
-                // '7' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:25} ],
-                // ':' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:26} ],
-                // // Brick bottom
-                // '¤' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:31} ],
-                // '8' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:32} ],
-                // '#' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:33} ],
-                // // Brick smooth
-                // 'H' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:34} ],
-                // 'h' : () => [ sprite('tiles'), area(), body({ isStatic: true }), {frame:41} ],
-                // // Ladder
-                // 'D' : () => [ sprite('tiles'), area(), {frame:21} ],
-                // '9' : () => [ sprite('tiles'), area(), {frame:28} ],
-                // 'd' : () => [ sprite('tiles'), area(), {frame:35} ],
-                // // Tall plant
-                // 'E' : () => [ sprite('tiles'), area(), {frame:22} ],
-                // '!' : () => [ sprite('tiles'), area(), {frame:29} ],
-                // 'e' : () => [ sprite('tiles'), area(), {frame:36} ],
-                // // Tree top
-                // 'F' : () => [ sprite('tiles'), area(), {frame:23} ],
-                // '?' : () => [ sprite('tiles'), area(), {frame:30} ],
-                // // Tree bottom
-                // 'f' : () => [ sprite('tiles'), area(), {frame:37} ],
-                // 'g' : () => [ sprite('tiles'), area(), {frame:38} ],
-                // 'G' : () => [ sprite('tiles'), area(), {frame:39} ],
-                // // Coins
-                // 'I' : () => [ sprite('tiles'), {frame:54}, 'coin' ],
-                // 'i' : () => [ sprite('tiles'), {frame:55}, 'coin' ],
-                // 'J' : () => [ sprite('tiles'), {frame:61}, 'coin' ],
-                // 'j' : () => [ sprite('tiles'), {frame:62}, 'coin' ],
-                // // Potions
-                // 'M' : () => [ sprite('tiles'), {frame:56} ],
-                // 'm' : () => [ sprite('tiles'), {frame:57} ],
-                // 'N' : () => [ sprite('tiles'), {frame:63} ],
-                // 'n' : () => [ sprite('tiles'), {frame:64} ],
-                // // Clouds big corner
-                // 'P' : () => [ sprite('tiles'),  {frame:51} ],
-                // 'p' : () => [ sprite('tiles'),  {frame:52} ],
-                // 'Q' : () => [ sprite('tiles'),  {frame:58} ],
-                // 'q' : () => [ sprite('tiles'),  {frame:59} ],
-                // // Clouds small corner
-                // 'R' : () => [ sprite('tiles'),  {frame:65} ],
-                // 'r' : () => [ sprite('tiles'),  {frame:66} ],
-                // 'S' : () => [ sprite('tiles'),  {frame:72} ],
-                // 's' : () => [ sprite('tiles'),  {frame:73} ],
-                // // Clouds double corner
-                // 'T' : () => [ sprite('tiles'),  {frame:53} ],
-                // 't' : () => [ sprite('tiles'), {frame:67} ],
-                // // Clouds solid color
-                // 'U' : () => [ sprite('tiles'), {frame:60} ],
-                // 'u' : () => [ sprite('tiles'), {frame:74} ],
-                // // Plants
-                // 'K' : () => [ sprite('tiles'), {frame:45} ],
-                // 'k' : () => [ sprite('tiles'), {frame:48} ],
-                // // Stones
-                // 'L' : () => [ sprite('tiles'),  {frame:46} ],
-                // 'l' : () => [ sprite('tiles'),  {frame:47} ],
-                // // Trapdoor or wooden crate or closed window or whatever
-                // 'O' : () => [ sprite('tiles'), area(), {frame:49} ],
-                // 'o' : () => [ sprite('tiles'), area(), {frame:50} ], 
+                'B' : () => [ sprite('brick-wall-top'), area(), body({ isStatic: true }) ],
+                '4' : () => [ sprite('brick-wall-middle'), area(), body({ isStatic: true }) ],
+                'b' : () => [ sprite('brick-wall-bottom'), area(), body({ isStatic: true }) ],
+                // Brick floor
+                'C' : () => [ sprite('brick-floor-left'), area(), body({ isStatic: true }) ],
+                '5' : () => [ sprite('brick-floor-center'), area(), body({ isStatic: true }) ],
+                'c' : () => [ sprite('brick-floor-right'), area(), body({ isStatic: true }) ],
+                // Brick top
+                ',' : () => [ sprite('brick-top-left'), area(), body({ isStatic: true }) ],
+                '6' : () => [ sprite('brick-top-center'), area(), body({ isStatic: true }) ],
+                '.' : () => [ sprite('brick-top-right'), area(), body({ isStatic: true }) ],
+                // Brick middle
+                ';' : () => [ sprite('brick-middle-left'), area(), body({ isStatic: true }) ],
+                '7' : () => [ sprite('brick-middle-center'), area(), body({ isStatic: true }) ],
+                ':' : () => [ sprite('brick-middle-right'), area(), body({ isStatic: true }) ],
+                // Brick bottom
+                '¤' : () => [ sprite('brick-bottom-left'), area(), body({ isStatic: true }) ],
+                '8' : () => [ sprite('brick-bottom-center'), area(), body({ isStatic: true }) ],
+                '#' : () => [ sprite('brick-bottom-right'), area(), body({ isStatic: true }) ],
+                // Brick smooth
+                'H' : () => [ sprite('brick-smooth-cracked'), area(), body({ isStatic: true }) ],
+                'h' : () => [ sprite('brick-smooth'), area(), body({ isStatic: true }) ],
+                // Ladder
+                'D' : () => [ sprite('ladder-top'), area() ],
+                '9' : () => [ sprite('ladder-middle'), area() ],
+                'd' : () => [ sprite('ladder-bottom'), area() ],
+                // Tall plant
+                'E' : () => [ sprite('tall-plant-top'), area() ],
+                '!' : () => [ sprite('tall-plant-middle'), area() ],
+                'e' : () => [ sprite('tall-plant-bottom'), area() ],
+                // Tree top
+                'F' : () => [ sprite('tree-top'), area() ],
+                '?' : () => [ sprite('tree-middle'), area() ],
+                // Tree bottom
+                'f' : () => [ sprite('tree-bottom'), area() ],
+                'g' : () => [ sprite('tree-bottom-variant1'), area() ],
+                'G' : () => [ sprite('tree-bottom-variant2'), area() ],
+                // Coins
+                'I' : () => [ sprite('coin-yellow'), area(), body(), 'coin' ],
+                'i' : () => [ sprite('coin-red'), area(), body(), 'coin' ],
+                'J' : () => [ sprite('coin-blue'), area(), body(), 'coin' ],
+                'j' : () => [ sprite('coin-green'), area(), body(), 'coin' ],
+                // Potions
+                'M' : () => [ sprite('potion-green'), 'potion' ],
+                'm' : () => [ sprite('potion-red'), 'potion' ],
+                'N' : () => [ sprite('potion-brown'), 'potion' ],
+                'n' : () => [ sprite('potion-yellow'), 'potion' ],
+                // Clouds big corner
+                'P' : () => [ sprite('cloud-big-top-left') ],
+                'p' : () => [ sprite('cloud-big-top-right') ],
+                'Q' : () => [ sprite('cloud-big-bottom-left') ],
+                'q' : () => [ sprite('cloud-big-bottom-right') ],
+                // Clouds small corner
+                'R' : () => [ sprite('cloud-big-top-left') ],
+                'r' : () => [ sprite('cloud-big-top-right') ],
+                'S' : () => [ sprite('cloud-big-bottom-left') ],
+                's' : () => [ sprite('cloud-big-bottom-right') ],
+                // Clouds double corner
+                'T' : () => [ sprite('cloud-doublecorner-top') ],
+                't' : () => [ sprite('cloud-doublecorner-bottom') ],
+                // Clouds solid color
+                'U' : () => [ sprite('cloud-solid') ],
+                'u' : () => [ sprite('sky-solid') ],
+                // Plants
+                'K' : () => [ sprite('flower-small') ],
+                'k' : () => [ sprite('flower-big') ],
+                // Stones
+                'L' : () => [ sprite('rock-small') ],
+                'l' : () => [ sprite('rock-big') ],
+                
+                'O' : () => [ sprite('wood-horizontal'), area(), body(), anchor("center") ],
+                'o' : () => [ sprite('wood-vertical'), area(), body(), anchor("center") ], 
 
-                // 'v' : () => [ sprite('tiles'), area(), {frame:10} ], // Single dirt block
-                // 'w' : () => [ sprite('tiles'), area(), {frame:27} ], // single brick block
-                // 'x' : () => [ sprite('tiles'),  {frame:11}, 'portal' ], // Dirt cave
-                // 'y' : () => [ sprite('tiles'),  {frame:40}, 'water' ], // Water
+                'v' : () => [ sprite('single-dirt-block'), area(), body({ isStatic: true }) ],
+                'w' : () => [ sprite('single-brick-block'), area(), body({ isStatic: true }) ],
+                'x' : () => [ sprite('dirt-cave'), area(), body(), 'portal' ],
+                'y' : () => [ sprite('water'), area(), body({ isStatic: true }), 'water' ], 
 
-                // '@' : [ sprite('name'), solid(), scale(1), body(),'tag','tags', {frame:0} ]
+                // '@' : [ sprite('name'), solid(), scale(1), body(),'tag','tags' ]
             }
         }
 
@@ -419,21 +828,29 @@ function startGame() {
         // const gemsElem = document.getElementById('gems');
         // gemsElem.textContent = scoreLabel;
 
-        const dino = add([
-            sprite("doux"),
-            pos(25, height()/4),
-            body(),
-            area(),
-            // area(vec2(-7, -4), vec2(7, -16)),
+        // const dino = add([
+        //     sprite("doux"),
+        //     pos(25, height()/4),
+        //     body(),
+        //     area(),
+            // area(vec2(-7, -1), vec2(7, -16)),
             // big(),
             // origin('bot'),
-            // {
-            //     width: 16,
-            //     height: 16
-            // }
-        ]);
-        // console.log("dino", dino, dino.numFrames());
-        dino.play("idle");
+        // ]);
+
+        
+        const dino = gameLevel.spawn([
+        // const dino = add([
+            sprite("doux", { anim: "idle" }),
+            body(),
+            // pos(25, height()/4),
+            // area({ shape: new Rect(vec2(0, 0), 16, 16) }),
+            area(),
+            anchor("center"),
+            tile()
+        ], 4, 0);
+
+        // dino.play("idle");
         
         // function big() {
         //     let timer = 0;
@@ -467,7 +884,7 @@ function startGame() {
         // }
 
         dino.onCollide('portal', () => {
-            keyPress('s', () => {
+            onKeyPress('s', () => {
                 go('game', {
                     level: (level + 1) % maps.length,
                     score: scoreLabel
@@ -567,11 +984,11 @@ function startGame() {
             add([ text(`Press [ENTER] to play again \n or [ESC] to quit`, 10), pos(width()/2, height()/1.5) ]);
             updateHighscore(score);
 
-            keyPress('enter', () => {
+            onKeyPress('enter', () => {
                 console.log("ENTER!");
                 restart();
             });
-            keyPress('escape', () => {
+            onKeyPress('escape', () => {
                 console.log("ESC!");
             });
         })
