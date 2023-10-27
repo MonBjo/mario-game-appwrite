@@ -373,8 +373,8 @@ function startGame() {
     var platforms;
     var player;
     var cursors;
-    var score = 0;
-    var scoreText;
+    var level = 1;
+    var levelText;
 
     var game = new Phaser.Game(config);
     
@@ -449,7 +449,7 @@ function startGame() {
         this.physics.add.overlap(player, stars, collectStar, null, this);
 
         // ui
-        scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+        levelText = this.add.text(16, 16, 'level: 1', { fontSize: '32px', fill: '#000' });
 
         // bombs
         bombs = this.physics.add.group();
@@ -479,9 +479,10 @@ function startGame() {
 
 
     function collectStar(player, star) {
+        const gemsElem = document.getElementById('gems');
+        gemsElem.textContent = score;
+
         star.disableBody(true, true);
-        score += 1;
-        scoreText.setText('Score: ' + score);
 
         if(stars.countActive(true) === 0) {
             stars.children.iterate(function (child) {
