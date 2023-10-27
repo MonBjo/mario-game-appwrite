@@ -202,7 +202,8 @@ function startGame() {
         global: true,
         fullscreen: true,
         scale: 3,
-        clearColor: [0.2,0.2,0.2,0.8]
+        clearColor: [0.2,0.2,0.2,0.8],
+        background: [ 20, 20, 20 ]
     });
 
     const moveSpeed = 120;
@@ -214,7 +215,7 @@ function startGame() {
     let isJumping = true;
     
     let scoreLabel = 0;
-
+    const tileSize = 16;
 
     // loadRoot("../assets/");
     loadSpriteAtlas("../assets/sprites/DinoSprites-doux.png", {
@@ -697,8 +698,8 @@ function startGame() {
 
 
         const levelConfig = {
-            tileWidth: 16,
-            tileHeight: 16,
+            tileWidth: tileSize,
+            tileHeight: tileSize,
             tiles: {
                 // Dirt top 
                 '(' : () => [ sprite('dirt-top-left'), area(), body({ isStatic: true }), ],
@@ -755,10 +756,10 @@ function startGame() {
                 'g' : () => [ sprite('tree-bottom-variant1'), area() ],
                 'G' : () => [ sprite('tree-bottom-variant2'), area() ],
                 // Coins
-                'I' : () => [ sprite('coin-yellow'), area(), body(), 'coin' ],
-                'i' : () => [ sprite('coin-red'), area(), body(), 'coin' ],
-                'J' : () => [ sprite('coin-blue'), area(), body(), 'coin' ],
-                'j' : () => [ sprite('coin-green'), area(), body(), 'coin' ],
+                'I' : () => [ sprite('coin-yellow'), area(), 'coin' ],
+                'i' : () => [ sprite('coin-red'), area(), 'coin' ],
+                'J' : () => [ sprite('coin-blue'), area(), 'coin' ],
+                'j' : () => [ sprite('coin-green'), area(), 'coin' ],
                 // Potions
                 'M' : () => [ sprite('potion-green'), 'potion' ],
                 'm' : () => [ sprite('potion-red'), 'potion' ],
@@ -786,13 +787,13 @@ function startGame() {
                 // Stones
                 'L' : () => [ sprite('rock-small') ],
                 'l' : () => [ sprite('rock-big') ],
-                
+                // Wood crates
                 'O' : () => [ sprite('wood-horizontal'), area(), body(), anchor("center") ],
                 'o' : () => [ sprite('wood-vertical'), area(), body(), anchor("center") ], 
-
+                // Other
                 'v' : () => [ sprite('single-dirt-block'), area(), body({ isStatic: true }) ],
                 'w' : () => [ sprite('single-brick-block'), area(), body({ isStatic: true }) ],
-                'x' : () => [ sprite('dirt-cave'), area(), body(), 'portal' ],
+                'x' : () => [ sprite('dirt-cave'), area({ shape: new Rect(vec2(0,15), 16, 16) }), body({ isStatic: true }), 'portal' ],
                 'y' : () => [ sprite('water'), area(), body({ isStatic: true }), 'water' ], 
 
                 // '@' : [ sprite('name'), solid(), scale(1), body(),'tag','tags' ]
@@ -843,11 +844,13 @@ function startGame() {
             sprite("doux", { anim: "idle" }),
             body(),
             // pos(25, height()/4),
-            // area({ shape: new Rect(vec2(0, 0), 16, 16) }),
-            area(),
+            area({ shape: new Rect(vec2(1, 2), 12, 13) }),
+            // area(),
             anchor("center"),
             tile()
         ], 4, 0);
+
+        console.log("dino: ", dino);
 
         // dino.play("idle");
         
@@ -929,6 +932,7 @@ function startGame() {
         // });
 
         dino.onUpdate(() => {
+
             if(dino.isGrounded()) {
                 isJumping = false;
             }
@@ -947,16 +951,20 @@ function startGame() {
         //     mushroom.move(20, 0);
         // })
 
+        onKeyDown('a', () => dino.move(-moveSpeed, 0) );
+        onKeyDown('d', () => dino.move(moveSpeed, 0) );
 
-        onKeyDown('a', () => {
-            dino.move(-moveSpeed, 0);
+        onKeyPress('a', () => {
+            // onKeyPress('s', () => { dino.play("sneak") });
             dino.play("run");
+            dino.flipX = true;
         });
-        onKeyDown('d', () => {
-            dino.move(moveSpeed, 0);
+        onKeyPress('d', () => {
+            // onKeyPress('s', () => { dino.play("sneak") });
             dino.play("run");
+            dino.flipX = false;
         });
-        onKeyDown('s',() => {
+        onKeyDown('s', () => {
             dino.play("sneak");
         });
         onKeyPress('space', () => {
@@ -966,10 +974,11 @@ function startGame() {
                 dino.play("jump");    
             }
         });
-        onKeyRelease(['a', 'd', 's', 'space'], () => {
-            dino.play("idle");
+        ['a', 'd', 's', 'space'].forEach(key => {
+            onKeyRelease(key, () => {
+                dino.play("idle");
+            });
         });
-
 
         scene('lose', ({score}) => {
             function gemsText() {
