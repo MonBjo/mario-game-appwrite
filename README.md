@@ -32,7 +32,7 @@ BUGS:
 --- 
 
 ## v.0.5.0
-I have really been trying to update the kaboom version from Legacy to v.3 but I keep getting these collision and rendering issues. I've asked on their forum and nobody knows how I could fix it. I managed to make it *better* but when somenthing doens't even reach to "good" it's not good enough.
+I have really been trying to update the kaboom version from Legacy to v.3 but I keep getting these collision and rendering issues. I've asked on their forum and nobody knows how I could fix it. I managed to make it *better* but when it doens't even reach to "good" it's not good enough.
 |   |   |
 |---|---|
 |![image](assets/readme/rendering_issue1.gif)|![image](assets/readme/rendering_issue2.gif)|
