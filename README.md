@@ -33,13 +33,13 @@ BUGS:
 
 ## v.0.5.0
 I have really been trying to update the kaboom version from Legacy to v.3 but I keep getting these collision and rendering issues. I've asked on their forum and nobody knows how I could fix it. I managed to make it *better* but when it doens't even reach to "good" it's not good enough.
-|   |   |
-|---|---|
-|![image](assets/readme/rendering_issue1.gif)|![image](assets/readme/rendering_issue2.gif)|
 
 I feel like I'm fighting against the library, not with it. So I will have to find a better library since I'm doing this for *fun*.
 
 [The branch that would have been v.0.5.0](https://github.com/MonBjo/mario-game-appwrite/tree/update-kaboom)
+|   |   |
+|---|---|
+|![image](assets/readme/rendering_issue1.gif)|![image](assets/readme/rendering_issue2.gif)|
 
 ## v.0.4.0
 The tutorial by Ania is done. It was very well made and I highly recommend it! I wouldn't say it is a *finished* game but it is definitely a good base and starting point!
