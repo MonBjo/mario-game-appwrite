@@ -1,15 +1,18 @@
 const maps = [
     [
-        '                                                                            ',
-        '                                                                            ',
-        '                                                                            ',
-        ' I                                                                         x',
-        '                                      E                                 H (0',
-        ' o                                    !      M  m  N  n               h   [1',
-        ' Oo     ii                        F  Fe                        G    H     [1',
-        '(0000)  Aa    J    j              g  ?,666.                B C55c h       [1',
-        '[1111]       A3a   v     K k L l  x  f;7777:            B  4              [1',
-        '<2222>yyyyyyyyyyyyyyyA33333333333333ya¤88888#yyC5cyyCcyybyyb              [1'
+        '                                                                             ',
+        '                                                                             ',
+        '  I                                                                         x',
+        '                                       E                                 H (0',
+        '   o                                   !      M  m  N  n               h   [1',
+        '  Oo     ii                        F  Fe                        G    H     [1',
+        ' (0000)  Aa    J    j              g  ?,666.                B C55c h       [1',
+        ' [1111]       A3a   v     K k L l  x  f;7777:            B  4              [1',
+        ' <2222>yyyyyyyyyyyyyyyA33333333333333ya¤88888#yyC5cyyCcyybyyb              [1',
+        '                                                                             ',
+        '                                                                             ',
+        '(000000000000000000000000000000000000000000000000000000000000000000000000000)',
+        '                                                                             ',
     ],
     [
         '                                      ',
