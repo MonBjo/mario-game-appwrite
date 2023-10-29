@@ -1,198 +1,3 @@
-// const { json } = require("express");
-
-const { Client, Account, Databases, ID, Query } = Appwrite;
-
-const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject(projectId)
-;
-
-const account = new Account(client);
-const database = new Databases(client);
-
-function isLoggedIn() {
-    return account.get().then(response => {
-        // console.log("response", response);
-        if(response) {
-            return true;
-        }
-        return false;
-    }).catch(error => console.log("error", error));
-}
-function getUserId() {
-    return account.get().then(response => {
-        return response.$id;
-    }).catch(error => console.log("error", error));
-}
-
-function displayUserName() {
-    account.get().then(response => {
-        const usernameElem = document.getElementById('username');
-        usernameElem.textContent = response.name;
-    }).catch(error => console.log("error", error));
-}
-
-function updateHighscore(score) {
-    const currentHighscore = document.getElementById('highscore').textContent;
-    if(Number(score) > Number(currentHighscore)) {
-        getUserId().then(userId => {
-            database.updateDocument(
-                databaseId,
-                collectionId,
-                userId,
-                {
-                    "userId": userId,
-                    "highscore": score
-                }
-            ).then(() => {
-                showScore();
-            }).then(error => console.log("error", error));
-        })
-    }
-}
-
-function showScore() {
-    getUserId().then(userId => {
-        console.log("userId", userId);
-        database.listDocuments(
-            databaseId,
-            collectionId,
-            [
-                Query.equal("userId", userId)
-            ]
-        ).then(response => {
-            const highscoreElem = document.getElementById('highscore')
-            highscoreElem.textContent = response.documents[0].highscore;
-            // console.log("response highscore", response);
-        });
-    })
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    displayUserName();
-    showScore();
-})
-
-function register(event) {
-    event.preventDefault();
-    
-    account.create(
-        ID.unique(),
-        event.target.elements['register-email'].value,
-        event.target.elements['register-password'].value,
-        event.target.elements['register-username'].value
-    ).then(response => {
-        console.log("Account create response", response);
-
-        database.createDocument(
-            databaseId, 
-            collectionId,
-            response.$id, // document id is the same as user id
-            {
-                "userId": response.$id,
-                "highscore": 0
-            }
-        );
-
-        account.createEmailSession(
-            event.target.elements['register-email'].value,
-            event.target.elements['register-password'].value
-        ).then(() => {
-            showDisplay();
-            displayUserName();
-        })
-
-    }).catch(error => console.error("Account create error", error));
-}
-
-function login(event) {
-    event.preventDefault();
-    console.log("login event", event);
-    account.createEmailSession(
-        event.target.elements['login-email'].value,
-        event.target.elements['login-password'].value
-    ).then(() => {
-        alert('Session created successfully!');
-        showDisplay();
-        displayUserName();
-        client.subscribe("account", (response) => {
-            console.log("response", response);
-        });
-    }).catch(error => {
-        alert("Failed to create session");
-        console.log("error", error);
-    });
-}
-
-function logout() {
-    account.deleteSessions().then(() => {
-        alert('Logged out');
-        console.log('Current session deleted');
-        showDisplay();
-        const highscoreElem = document.getElementById('highscore');
-        highscoreElem.textContent = "";
-    }).catch(error => console.log("error", error));
-}
-
-function toggleModal(event) {
-    const registerFormElem = document.getElementById('register-form');
-    const loginFormElem = document.getElementById('login-form');
-    const registerButtonElem = document.getElementById('register-button');
-    const loginButtonElem = document.getElementById('login-button');
-
-    if(event.srcElement.id ==='register-button') {
-        registerFormElem.classList.remove('hidden');
-        loginFormElem.classList.add('hidden');
-        loginButtonElem.classList.add('not-active');
-        registerButtonElem.classList.remove('not-active');
-    }
-    if(event.srcElement.id ==='login-button') {
-        registerFormElem.classList.add('hidden');
-        loginFormElem.classList.remove('hidden');
-        loginButtonElem.classList.remove('not-active');
-        registerButtonElem.classList.add('not-active');
-    }
-}
-
-function showDisplay() {
-    const modalElem = document.getElementById('modal');
-    modalElem.classList.add('hidden');
-    isLoggedIn().then(isLogin => {
-        if(isLogin) {
-            const modalElem = document.getElementById('modal');
-            modalElem.classList.add('hidden');
-            const logoutButtonElem = document.getElementById('logout-button');
-            logoutButtonElem.classList.remove('hidden');
-            const gameInfoElems = document.querySelectorAll('.gameInfo');
-            for(let elem of gameInfoElems){
-                elem.classList.remove('hidden');
-            }
-
-            startGame();
-        } else {
-            const modalElem = document.getElementById('modal');
-            modalElem.classList.remove('hidden');
-            const logoutButtonElem = document.getElementById('logout-button');
-            logoutButtonElem.classList.add('hidden');
-            const gameInfoElems = document.querySelectorAll('gameInfo');
-            for(let elem of gameInfoElems){
-                elem.classList.add('hidden');
-            }
-
-            const usernameElem = document.getElementById('username');
-            usernameElem.textContent = "";
-            const canvasElem = document.querySelector('canvas');
-            if(canvasElem) {
-                canvasElem.remove();
-            }
-        }
-    }).catch(error => console.log("error", error))
-}
-
-showDisplay();
-
-
-// Kaboom game
 function startGame() {
     
     const moveSpeed = 120;
@@ -356,6 +161,7 @@ function startGame() {
         type: Phaser.AUTO,
         width: 800,
         height: 600,
+        zoom: 2,
         physics: {
             default: 'arcade',
             arcade: {
@@ -383,93 +189,85 @@ function startGame() {
         this.load.image('ground', '../assets/temporary/platform.png');
         this.load.image('star', '../assets/temporary/star.png');
         this.load.image('bomb', '../assets/temporary/bomb.png');
-        this.load.spritesheet('dude', 
-            '../assets/temporary/dude.png',
-            { frameWidth: 32, frameHeight: 48 }
-        );
+        // this.load.spritesheet('dude', 
+        //     '../assets/temporary/dude.png',
+        //     { frameWidth: 32, frameHeight: 48 }
+        // );
+
+        this.load.spritesheet('player-doux', '../assets/sprites/DinoSprites-doux.png', {
+            frameWidth: 24,
+            frameHeight: 24,
+            startFrame: 0,
+            endFrame: 23
+        });
+
+        this.load.image('tiles', '../assets/sprites/nature-platformer-tileset-16x16.png');
+        this.load.tilemapTiledJSON('map01', '../assets/maps/map01.json');
     }
     
     function create() {
+        cursors = this.input.keyboard.createCursorKeys();
+        
         // world
-        this.add.image(0, 0, 'sky').setOrigin(0, 0);
+        const map = this.make.tilemap({ key: 'map01' })
+        const tileset = map.addTilesetImage('tiles1', 'tiles');
 
-        platforms = this.physics.add.staticGroup();
-
-        platforms.create(400, 568, 'ground').setScale(2).refreshBody();
-    
-        platforms.create(600, 400, 'ground');
-        platforms.create(50, 250, 'ground');
-        platforms.create(750, 220, 'ground');
-
+        map.createLayer('sky', tileset);
+        let hillsLayer = map.createLayer('hills', tileset);
+        let groundLayer = map.createLayer('ground', tileset);
+        let waterLayer = map.createLayer('water', tileset);
 
         // player
-        player = this.physics.add.sprite(100, 450, 'dude');
+        player = this.physics.add.sprite(100, 200, 'player-doux');
         
         player.setBounce(0.2);
         player.setCollideWorldBounds(true);
 
         this.anims.create({
-            key: 'left',
-            frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
-            frameRate: 10,
+            key: 'idle',
+            frames: this.anims.generateFrameNumbers('player-doux', { start: 0, end: 2 }),
+            frameRate: 3,
             repeat: -1 // loop
         });
 
         this.anims.create({
-            key: 'turn',
-            frames: [ { key: 'dude', frame: 4 } ],
-            frameRate: 20
+            key: 'jump',
+            frames:this.anims.generateFrameNumbers('player-doux', { start: 21, end: 21 }),
+            frameRate: 1,
+            repeat: 1
         });
 
         this.anims.create({
-            key: 'right',
-            frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
-            frameRate: 10,
+            key: 'run',
+            frames: this.anims.generateFrameNumbers('player-doux', { start: 3, end: 9 }),
+            frameRate: 7,
             repeat: -1
         });
 
-        cursors = this.input.keyboard.createCursorKeys();
-        console.log("cursors ", cursors);
-
-        this.physics.add.collider(player, platforms);
-
-
-        // interactive
-        stars = this.physics.add.group({
-            key: 'star',
-            repeat: 11,
-            setXY: { x: 12, y: 0, stepX: 70 }
-        });
-        
-        stars.children.iterate(function (child) {
-            child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
-        });
-
-        this.physics.add.collider(stars, platforms);
-        this.physics.add.overlap(player, stars, collectStar, null, this);
 
         // ui
-        levelText = this.add.text(16, 16, 'level: 1', { fontSize: '32px', fill: '#000' });
+        levelText = this.add.text(16, 16, 'level: 1', { fontSize: '16px', fill: '#000' });
+        
+        // collision
+        hillsLayer.setCollisionByProperty({collision: true});
+        groundLayer.setCollisionByProperty({collision: true});
+        waterLayer.setCollisionByProperty({collision: true});
 
-        // bombs
-        bombs = this.physics.add.group();
-        this.physics.add.collider(bombs, platforms);
-        this.physics.add.collider(player, bombs, hitBomb, null, this);
-
+        this.physics.add.collider(player, hillsLayer);
+        this.physics.add.collider(player, groundLayer);
+        this.physics.add.collider(player, waterLayer);
     }
 
     function update() {
         if(cursors.left.isDown) {
             player.setVelocityX(-160);
-            player.anims.play('left', true);
-        }
-        else if(cursors.right.isDown) {
+            player.anims.play('run', true);
+        } else if(cursors.right.isDown) {
             player.setVelocityX(160);
-            player.anims.play('right', true);
-        }
-        else {
+            player.anims.play('run', true);
+        } else {
             player.setVelocityX(0);
-            player.anims.play('turn');
+            player.anims.play('idle');
         }
 
         if(cursors.up.isDown && player.body.touching.down) {
@@ -480,7 +278,7 @@ function startGame() {
 
     function collectStar(player, star) {
         const gemsElem = document.getElementById('gems');
-        gemsElem.textContent = score;
+        // gemsElem.textContent = score;
 
         star.disableBody(true, true);
 
