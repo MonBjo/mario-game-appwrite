@@ -52,7 +52,7 @@ function updateHighscore(score) {
 
 function showScore() {
     getUserId().then(userId => {
-        console.log("userId", userId);
+        // console.log("userId", userId);
         database.listDocuments(
             databaseId,
             collectionId,
