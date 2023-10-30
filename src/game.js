@@ -17,8 +17,8 @@ function startGame() {
         physics: {
             default: 'arcade',
             arcade: {
-                gravity: { y: 300 },
-                debug: true
+                gravity: { y: 1000 },
+                debug: false
             }
         },
         scene: {
@@ -37,7 +37,7 @@ function startGame() {
             frameWidth: 24,
             frameHeight: 24,
             startFrame: 0,
-            endFrame: 23
+            endFrame: 23,
         });
 
         this.load.image('tiles', '../assets/sprites/nature-platformer-tileset-16x16.png');
@@ -58,9 +58,12 @@ function startGame() {
 
         // player
         player = this.physics.add.sprite(100, 200, 'player-doux');
-        
+
         player.setBounce(0.2);
         player.setCollideWorldBounds(true);
+        player.body.height = 18;
+        player.body.width = 18;
+        player.body.offset = {x: 3, y: 3};
 
         this.anims.create({
             key: 'idle',
@@ -110,7 +113,7 @@ function startGame() {
         groundLayer.setCollisionByProperty({collision: true});
         waterLayer.setCollisionByProperty({collision: true});
 
-        this.physics.add.collider(player, hillsLayer);
+        // this.physics.add.collider(player, hillsLayer);
         this.physics.add.collider(player, groundLayer);
         this.physics.add.collider(player, waterLayer);
     }
@@ -132,8 +135,13 @@ function startGame() {
             player.anims.play('idle');
         }
 
-        if(cursors.up.isDown && player.body.touching.down) {
+        // if(cursors.up.isDown && player.body.touching.down) {
+        if(cursors.up.isDown && player.body.onFloor()) {
             player.setVelocityY(-330);
+            console.log(player);
+        }
+
+        if(player.body.blocked.none) {
             player.anims.play('jump');
         }
     }
