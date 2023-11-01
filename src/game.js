@@ -128,7 +128,7 @@ function startGame() {
         this.physics.add.collider(player, groundLayer);
         this.physics.add.collider(player, waterLayer);
 
-        // TODO: Break out to function
+        // TODO: Break out to a proper function
         hillsLayer.layer.data.forEach(row => {
             row.find((tile) => { 
                 if(tile.properties['collision-top']){
@@ -142,7 +142,7 @@ function startGame() {
                     tile.faceLeft = false;
                     tile.faceRight = false;
 
-                    console.log(tile);
+                    // console.log(tile);
                 }
             });
         });
