@@ -47,7 +47,17 @@ function startGame() {
     function create() {
         cursors = this.input.keyboard.createCursorKeys();
         
-        // world
+        // === WORLD ===
+        /* 
+        Some of the values below are fetched from the map data in program Tiled:
+        
+        this.make.tilemap({ key: 'Chosen key after loding the JSON data in preload()' });
+
+        map.addTilesetImage('Name of the tileset in Tiled','Chosen key after loading the image in preload()');
+        
+        map.createLayer('Name of the layer in Tiled', tileset variable);
+        */
+
         const map = this.make.tilemap({ key: 'map01' })
         const tileset = map.addTilesetImage('tiles1', 'tiles');
 
@@ -56,7 +66,8 @@ function startGame() {
         let groundLayer = map.createLayer('ground', tileset);
         let waterLayer = map.createLayer('water', tileset);
 
-        // player
+
+        // === PLAYER ===
         player = this.physics.add.sprite(100, 200, 'player-doux');
 
         player.setBounce(0.2);
@@ -108,14 +119,33 @@ function startGame() {
             repeat: -1 // loop
         });
 
-        // collision
+        // === COLLISION ====
         hillsLayer.setCollisionByProperty({collision: true});
         groundLayer.setCollisionByProperty({collision: true});
         waterLayer.setCollisionByProperty({collision: true});
 
-        // this.physics.add.collider(player, hillsLayer);
+        this.physics.add.collider(player, hillsLayer);
         this.physics.add.collider(player, groundLayer);
         this.physics.add.collider(player, waterLayer);
+
+        // TODO: Break out to function
+        hillsLayer.layer.data.forEach(row => {
+            row.find((tile) => { 
+                if(tile.properties['collision-top']){
+                    tile.collideUp = true;
+                    tile.collideDown = false;
+                    tile.collideLeft = false;
+                    tile.collideRight = false;
+
+                    tile.faceTop = true;
+                    tile.faceBottom = false;
+                    tile.faceLeft = false;
+                    tile.faceRight = false;
+
+                    console.log(tile);
+                }
+            });
+        });
     }
 
     function update() {
@@ -130,6 +160,7 @@ function startGame() {
         } else if(cursors.down.isDown) {
             player.setVelocityX(0);
             player.anims.play('duck');
+            console.log(player);
         } else {
             player.setVelocityX(0);
             player.anims.play('idle');
@@ -138,7 +169,6 @@ function startGame() {
         // if(cursors.up.isDown && player.body.touching.down) {
         if(cursors.up.isDown && player.body.onFloor()) {
             player.setVelocityY(-330);
-            console.log(player);
         }
 
         if(player.body.blocked.none) {
