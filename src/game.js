@@ -30,6 +30,7 @@ function startGame() {
     
     var player;
     var cursors;
+    var caveTile;
     var game = new Phaser.Game(config);
     
     function preload() {
@@ -42,6 +43,7 @@ function startGame() {
 
         this.load.image('tiles', '../assets/sprites/nature-platformer-tileset-16x16.png');
         this.load.tilemapTiledJSON('map01', '../assets/maps/map01.json');
+        this.load.tilemapTiledJSON('map02', '../assets/maps/map02.json');
     }
     
     function create() {
@@ -70,7 +72,6 @@ function startGame() {
         // === PLAYER ===
         player = this.physics.add.sprite(100, 200, 'player-doux');
 
-        player.setBounce(0.2);
         player.setCollideWorldBounds(true);
         player.body.height = 18;
         player.body.width = 18;
@@ -127,7 +128,8 @@ function startGame() {
         this.physics.add.collider(player, hillsLayer);
         this.physics.add.collider(player, groundLayer);
         this.physics.add.collider(player, waterLayer);
-
+        console.log(hillsLayer.getTileAtWorldXY(player.x, player.y));
+        
         // TODO: Break out to a proper function
         hillsLayer.layer.data.forEach(row => {
             row.find((tile) => { 
@@ -142,7 +144,6 @@ function startGame() {
                     tile.faceLeft = false;
                     tile.faceRight = false;
 
-                    // console.log(tile);
                 }
             });
         });
@@ -160,7 +161,13 @@ function startGame() {
         } else if(cursors.down.isDown) {
             player.setVelocityX(0);
             player.anims.play('duck');
-            console.log(player);
+            
+            // TODO: Break out to a proper function
+            if(caveTile.getTileAtWorldXY(player.x, player.y)) {
+                if(caveTile.getTileAtWorldXY(player.x, player.y).properties['id'] == 'cave') {
+                    console.log("You made it to the cave!");
+                }
+            }
         } else {
             player.setVelocityX(0);
             player.anims.play('idle');
