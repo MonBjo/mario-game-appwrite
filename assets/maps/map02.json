@@ -308,6 +308,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"dirt"
                         }]
                 }, 
                 {
@@ -322,6 +332,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"dirt"
                         }]
                 }, 
                 {
@@ -336,6 +356,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"dirt"
                         }]
                 }, 
                 {
@@ -350,6 +380,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"dirt"
                         }]
                 }, 
                 {
@@ -364,6 +404,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"dirt"
                         }]
                 }, 
                 {
@@ -378,6 +428,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"dirt"
                         }]
                 }, 
                 {
@@ -392,6 +452,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"brick"
                         }]
                 }, 
                 {
@@ -406,6 +476,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"dirt"
                         }]
                 }, 
                 {
@@ -420,6 +500,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"dirt"
                         }]
                 }, 
                 {
@@ -434,6 +524,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"dirt"
                         }]
                 }, 
                 {
@@ -448,6 +548,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"dirt"
                         }]
                 }, 
                 {
@@ -462,6 +572,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"cave"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"dirt"
                         }]
                 }, 
                 {
@@ -471,6 +591,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -485,6 +615,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"brick"
                         }]
                 }, 
                 {
@@ -499,6 +639,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"dirt"
                         }]
                 }, 
                 {
@@ -513,6 +663,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"dirt"
                         }]
                 }, 
                 {
@@ -527,6 +687,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"dirt"
                         }]
                 }, 
                 {
@@ -541,6 +711,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"brick"
                         }]
                 }, 
                 {
@@ -555,6 +735,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"brick"
                         }]
                 }, 
                 {
@@ -569,6 +759,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"brick"
                         }]
                 }, 
                 {
@@ -583,6 +783,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"brick"
                         }]
                 }, 
                 {
@@ -597,6 +807,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -611,6 +831,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -625,6 +855,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -639,6 +879,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"brick"
                         }]
                 }, 
                 {
@@ -653,6 +903,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"brick"
                         }]
                 }, 
                 {
@@ -667,6 +927,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"brick"
                         }]
                 }, 
                 {
@@ -681,6 +951,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"brick"
                         }]
                 }, 
                 {
@@ -695,6 +975,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -709,6 +999,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -723,6 +1023,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -737,6 +1047,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"brick"
                         }]
                 }, 
                 {
@@ -751,6 +1071,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"brick"
                         }]
                 }, 
                 {
@@ -765,6 +1095,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"brick"
                         }]
                 }, 
                 {
@@ -779,6 +1119,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"brick"
                         }]
                 }, 
                 {
@@ -793,6 +1143,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -807,6 +1167,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 },
             
@@ -822,6 +1192,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -831,6 +1211,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -845,6 +1235,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -859,6 +1259,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -873,6 +1283,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"brick"
                         }]
                 }, 
                 {
@@ -887,6 +1307,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"brick"
                         }]
                 }, 
                 {
@@ -901,6 +1331,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"brick"
                         }]
                 }, 
                 {
@@ -915,6 +1355,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"brick"
                         }]
                 }, 
                 {
@@ -929,6 +1379,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -943,6 +1403,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -957,6 +1427,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -971,6 +1451,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -985,6 +1475,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -999,6 +1499,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1013,6 +1523,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1027,6 +1547,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1041,6 +1571,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1055,6 +1595,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1069,6 +1619,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1083,6 +1643,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1097,6 +1667,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1111,6 +1691,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1125,6 +1715,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1139,6 +1739,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1153,6 +1763,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1167,6 +1787,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1181,6 +1811,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1195,6 +1835,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1209,6 +1859,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1223,6 +1883,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1237,6 +1907,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1251,6 +1931,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1265,6 +1955,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1279,6 +1979,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1293,6 +2003,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1307,6 +2027,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1321,6 +2051,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 },
             
@@ -1336,6 +2076,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1350,6 +2100,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }, 
                 {
@@ -1364,6 +2124,16 @@
                          "name":"collision-top",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":""
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":""
                         }]
                 }],
          "tilewidth":16
