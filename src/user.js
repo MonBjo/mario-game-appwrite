@@ -6,6 +6,8 @@ const client = new Client()
     .setProject(projectId)
 ;
 
+console.log("client",client);
+
 const account = new Account(client);
 const database = new Databases(client);
 

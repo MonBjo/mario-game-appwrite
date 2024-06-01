@@ -3,9 +3,9 @@ const app = express();
 
 app.use(express.static('.'));
 
-app.get('/', function (req,res) {
-    res.send('hellu');
-});
+// app.get('/', function (req,res) {
+//     res.send('hellu');
+// });
 
 const server = app.listen(8000, () => {
     const port = server.address().port;

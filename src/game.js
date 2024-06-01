@@ -32,6 +32,10 @@ function startGame() {
     var cursors;
     var caveTile;
     var game = new Phaser.Game(config);
+
+    let hillsLayer;
+    let groundLayer;
+    let waterLayer;
     
     function preload() {
         this.load.spritesheet('player-doux', '../assets/sprites/DinoSprites-doux.png', {
@@ -64,9 +68,9 @@ function startGame() {
         const tileset = map.addTilesetImage('tiles1', 'tiles');
 
         map.createLayer('sky', tileset);
-        let hillsLayer = map.createLayer('hills', tileset);
-        let groundLayer = map.createLayer('ground', tileset);
-        let waterLayer = map.createLayer('water', tileset);
+        hillsLayer = map.createLayer('hills', tileset);
+        groundLayer = map.createLayer('ground', tileset);
+        waterLayer = map.createLayer('water', tileset);
 
 
         // === PLAYER ===
@@ -162,12 +166,13 @@ function startGame() {
             player.setVelocityX(0);
             player.anims.play('duck');
             
-            // TODO: Break out to a proper function
-            if(caveTile.getTileAtWorldXY(player.x, player.y)) {
-                if(caveTile.getTileAtWorldXY(player.x, player.y).properties['id'] == 'cave') {
-                    console.log("You made it to the cave!");
+            if(hillsLayer.getTileAtWorldXY(player.x, player.y)) {
+                console.info("Tile id: ", hillsLayer.getTileAtWorldXY(player.x, player.y).properties.id);
+                if(hillsLayer.getTileAtWorldXY(player.x, player.y).properties.id == "cave") {
+                    console.log("You found the cave!");
                 }
             }
+            
         } else {
             player.setVelocityX(0);
             player.anims.play('idle');
