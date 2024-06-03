@@ -32,6 +32,7 @@ function startGame() {
     var cursors;
     var caveTile;
     var game = new Phaser.Game(config);
+    var level = "01";
 
     let hillsLayer;
     let groundLayer;
@@ -64,7 +65,7 @@ function startGame() {
         map.createLayer('Name of the layer in Tiled', tileset variable);
         */
 
-        const map = this.make.tilemap({ key: 'map01' })
+        const map = this.make.tilemap({ key: 'map'+level });
         const tileset = map.addTilesetImage('tiles1', 'tiles');
 
         map.createLayer('sky', tileset);
@@ -97,7 +98,7 @@ function startGame() {
             key: 'kick',
             frames: this.anims.generateFrameNumbers('player-doux', { start: 10, end: 12 }),
             frameRate: 10,
-            repeat: -1 // loop
+            repeat: -1
         });
         this.anims.create({
             key: 'hurt',
@@ -109,19 +110,19 @@ function startGame() {
             key: 'sneak',
             frames: this.anims.generateFrameNumbers('player-doux', { start: 17, end: 23 }),
             frameRate: 10,
-            repeat: -1 // loop
+            repeat: -1
         });
         this.anims.create({
             key: 'duck',
             frames:this.anims.generateFrameNumbers('player-doux', { start: 17, end: 17 }),
             frameRate: 1,
-            repeat: -1 // loop
+            repeat: -1
         });
         this.anims.create({
             key: 'jump',
             frames:this.anims.generateFrameNumbers('player-doux', { start: 21, end: 21 }),
             frameRate: 1,
-            repeat: -1 // loop
+            repeat: -1
         });
 
         // === COLLISION ====
@@ -170,12 +171,18 @@ function startGame() {
                 console.info("Tile id: ", hillsLayer.getTileAtWorldXY(player.x, player.y).properties.id);
                 if(hillsLayer.getTileAtWorldXY(player.x, player.y).properties.id == "cave") {
                     console.log("You found the cave!");
+                    if(level == "01") {
+                        level = "02";
+                    } else {
+                        level = "01";
+                    }
+                    this.scene.restart({ key: 'map'+level });
                 }
             }
             
         } else {
-            player.setVelocityX(0);
             player.anims.play('idle');
+            player.setVelocityX(0);
         }
 
         // if(cursors.up.isDown && player.body.touching.down) {

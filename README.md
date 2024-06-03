@@ -5,7 +5,7 @@ I follow along with Ania Kubów as she shows us how to make a web game.
 Made with:
 - The cute dinosarus are made by [Arks Digital](https://twitter.com/ArksDigital) on [itch.io](https://arks.itch.io/dino-characters)
 - The pretty world are made by [Rotting Pixels](https://twitter.com/PixelsRotting) on [itch.io](https://rottingpixels.itch.io/nature-platformer-tileset)
-- ~~[Kaboom Legacy](https://legacy.kaboomjs.com/)~~ [Phaser](https://phaser.io/) for animations
+- ~~[Kaboom Legacy](https://legacy.kaboomjs.com/)~~ [Phaser 3](https://phaser.io/) for animations
 - [Appwrite](https://appwrite.io/) as a database and user auth. *Similar to googels firebase.*
 
 TODO: *(in no particular order)*
