@@ -12,9 +12,9 @@ function startGame() {
         
     var config = {
         type: Phaser.AUTO,
-        width: 800,
+        width: 600,
         height: 600,
-        zoom: 2,
+        zoom: 1.9,
         physics: {
             default: 'arcade',
             arcade: {
@@ -177,6 +177,8 @@ function startGame() {
                 }, 200);
             }
         } else if(cursors.up.isDown) {
+            console.log(player);
+            console.log(waterLayer);
             let currentTile = hillsLayer.getTileAtWorldXY(player.x, player.y);
             if(currentTile && currentTile.properties.id == "cave") {
                 // Next level or interact

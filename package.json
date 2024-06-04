@@ -1,6 +1,6 @@
 {
   "name": "mario-game-appwrite",
-  "version": "1.0.0",
+  "version": "0.5.0",
   "description": "Follow along video by Ania Kubów on how to make a web game",
   "main": "index.js",
   "scripts": {
