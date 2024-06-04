@@ -168,6 +168,7 @@ function startGame() {
             player.setVelocityX(0);
             player.anims.play('duck');
             
+            // Next level
             let currentTile = hillsLayer.getTileAtWorldXY(player.x, player.y);
             if(currentTile && currentTile.properties.id == "cave") {
                 // TODO: Make a proper level handeler
@@ -178,12 +179,15 @@ function startGame() {
                 }
                 this.scene.restart({ key: 'map'+level });
             }
+
+            // Fallthrough
             if(cursors.down.getDuration() >= msToFallthrough) {
                 player.body.checkCollision.down = false;
                 setTimeout(() => {
                     player.body.checkCollision.down = true;
                 }, 200);
             }
+            
         } else {
             player.anims.play('idle');
             player.setVelocityX(0);
