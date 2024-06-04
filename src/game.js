@@ -85,9 +85,10 @@ function startGame() {
 
         this.anims.create({
             key: 'idle',
-            frames: this.anims.generateFrameNumbers('player-doux', { start: 0, end: 2 }),
+            frames: this.anims.generateFrameNumbers('player-doux', { start: 3, end: 9 }),
             frameRate: 3,
-            repeat: -1 // loop
+            // repeat: -1 // loop
+            loop: true
         });
         this.anims.create({
             key: 'run',
@@ -134,7 +135,6 @@ function startGame() {
         this.physics.add.collider(player, hillsLayer);
         this.physics.add.collider(player, groundLayer);
         this.physics.add.collider(player, waterLayer);
-        console.log(hillsLayer.getTileAtWorldXY(player.x, player.y));
         
         // TODO: Break out to a proper function
         hillsLayer.layer.data.forEach(row => {
@@ -168,17 +168,7 @@ function startGame() {
             player.setVelocityX(0);
             player.anims.play('duck');
             
-            let currentTile = hillsLayer.getTileAtWorldXY(player.x, player.y);
-            if(currentTile && currentTile.properties.id == "cave" && cursors.down.getDuration() < msToFallthrough) {
-                // Next level
-                // TODO: Make a proper level handeler
-                if(level == "01") {
-                    level = "02";
-                } else {
-                    level = "01";
-                }
-                this.scene.restart({ key: 'map'+level });
-            } else if(cursors.down.getDuration() >= msToFallthrough) {
+if(cursors.down.getDuration() >= msToFallthrough) {
                 // Fallthrough
                 player.body.checkCollision.down = false;
                 setTimeout(() => {
@@ -186,13 +176,25 @@ function startGame() {
                 }, 200);
             }
 
+        } else if(cursors.up.isDown) {
+            let currentTile = hillsLayer.getTileAtWorldXY(player.x, player.y);
+            if(currentTile && currentTile.properties.id == "cave") {
+                // Next level or interact
+                // TODO: Make a proper level handeler
+                if(level == "01") {
+                    level = "02";
+                } else {
+                    level = "01";
+                }
+                this.scene.restart({ key: 'map'+level });
+            }
         } else {
-            player.anims.play('idle');
             player.setVelocityX(0);
+            player.anims.play('idle');
         }
 
         // if(cursors.up.isDown && player.body.touching.down) {
-        if(cursors.up.isDown && player.body.onFloor()) {
+        if(cursors.space.isDown && player.body.onFloor()) {
             player.setVelocityY(-330);
         }
 
