@@ -6,6 +6,7 @@ function startGame() {
     let currentJumpForce = jumpForce;
     const fallDeath = 400;
     const enemySpeed = 20;
+    const msToFallthrough = 1300;
     let isJumping = true;
     let scoreLabel = 0;
         
@@ -167,19 +168,22 @@ function startGame() {
             player.setVelocityX(0);
             player.anims.play('duck');
             
-            if(hillsLayer.getTileAtWorldXY(player.x, player.y)) {
-                console.info("Tile id: ", hillsLayer.getTileAtWorldXY(player.x, player.y).properties.id);
-                if(hillsLayer.getTileAtWorldXY(player.x, player.y).properties.id == "cave") {
-                    console.log("You found the cave!");
-                    if(level == "01") {
-                        level = "02";
-                    } else {
-                        level = "01";
-                    }
-                    this.scene.restart({ key: 'map'+level });
+            let currentTile = hillsLayer.getTileAtWorldXY(player.x, player.y);
+            if(currentTile && currentTile.properties.id == "cave") {
+                // TODO: Make a proper level handeler
+                if(level == "01") {
+                    level = "02";
+                } else {
+                    level = "01";
                 }
+                this.scene.restart({ key: 'map'+level });
             }
-            
+            if(cursors.down.getDuration() >= msToFallthrough) {
+                player.body.checkCollision.down = false;
+                setTimeout(() => {
+                    player.body.checkCollision.down = true;
+                }, 200);
+            }
         } else {
             player.anims.play('idle');
             player.setVelocityX(0);
@@ -193,5 +197,6 @@ function startGame() {
         if(player.body.blocked.none) {
             player.anims.play('jump');
         }
+
     }
 }
