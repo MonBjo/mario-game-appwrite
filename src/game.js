@@ -6,7 +6,7 @@ function startGame() {
     let currentJumpForce = jumpForce;
     const fallDeath = 400;
     const enemySpeed = 20;
-    const msToFallthrough = 1300;
+    const msToFallthrough = 800;
     let isJumping = true;
     let scoreLabel = 0;
         
