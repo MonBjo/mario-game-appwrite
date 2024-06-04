@@ -73,7 +73,7 @@ function startGame() {
         hillsLayer = map.createLayer('hills', tileset);
         groundLayer = map.createLayer('ground', tileset);
         waterLayer = map.createLayer('water', tileset);
-
+        
 
         // === PLAYER ===
         player = this.physics.add.sprite(100, 200, 'player-doux');
@@ -82,11 +82,13 @@ function startGame() {
         player.body.height = 18;
         player.body.width = 18;
         player.body.offset = {x: 3, y: 3};
+        // player.body.setFrictionAir(5);
+        console.log(player);
 
         this.anims.create({
             key: 'idle',
-            frames: this.anims.generateFrameNumbers('player-doux', { start: 3, end: 9 }),
-            frameRate: 3,
+            frames: this.anims.generateFrameNumbers('player-doux', { start: 0, end: 2 }),
+            frameRate: 5,
             // repeat: -1 // loop
             loop: true
         });
@@ -167,15 +169,13 @@ function startGame() {
         } else if(cursors.down.isDown) {
             player.setVelocityX(0);
             player.anims.play('duck');
-            
-if(cursors.down.getDuration() >= msToFallthrough) {
+            if(cursors.down.getDuration() >= msToFallthrough) {
                 // Fallthrough
                 player.body.checkCollision.down = false;
                 setTimeout(() => {
                     player.body.checkCollision.down = true;
                 }, 200);
             }
-
         } else if(cursors.up.isDown) {
             let currentTile = hillsLayer.getTileAtWorldXY(player.x, player.y);
             if(currentTile && currentTile.properties.id == "cave") {
@@ -189,8 +189,8 @@ if(cursors.down.getDuration() >= msToFallthrough) {
                 this.scene.restart({ key: 'map'+level });
             }
         } else {
+            player.anims.play('idle', true);
             player.setVelocityX(0);
-            player.anims.play('idle');
         }
 
         // if(cursors.up.isDown && player.body.touching.down) {
